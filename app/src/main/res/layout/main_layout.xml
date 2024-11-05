@@ -4,22 +4,18 @@
               android:layout_height="match_parent" android:orientation="vertical">
     <ListView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
     />
-    <androidx.constraintlayout.widget.Barrier
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:barrierDirection="top" android:layout_weight="1"
-    />
+
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
     >
         <Button
-                android:id="@+id/button9"
-                android:text="Button"
+                android:id="@+id/btn_result_page"
+                android:text="@string/brn_calulate_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -35,8 +31,8 @@
                 app:cornerRadius="16dp"
         />
         <Button
-                android:id="@+id/button11"
-                android:text="Button"
+                android:id="@+id/btn_add_item"
+                android:text="@string/btn_add_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -52,19 +48,15 @@
                 app:cornerRadius="16dp"
         />
     </LinearLayout>
-    <androidx.constraintlayout.widget.Barrier
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:barrierDirection="top"
-    />
+
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
     >
         <Button
-                android:id="@+id/button10"
-                android:text="Button"
+                android:id="@+id/btn_form_page"
+                android:text="@string/btn_forms_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -80,8 +72,8 @@
                 app:cornerRadius="16dp"
         />
         <Button
-                android:id="@+id/button12"
-                android:text="Button"
+                android:id="@+id/btn_random_items"
+                android:text="@string/btn_generate_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
