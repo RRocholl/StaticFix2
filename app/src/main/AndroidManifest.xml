@@ -23,8 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".FormCollectionPage"/>
-        <activity android:name=".ResultPage"/>
+        <activity android:name=".FormCollectionPage"
+                  android:parentActivityName=".MainPage"
+
+        />
+        <activity android:name=".ResultPage"
+                  android:parentActivityName=".MainPage"
+        />
     </application>
 
 
