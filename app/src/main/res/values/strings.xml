@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">StaticFix2</string>
-    <string name="brn_calulate_name">Calulate</string>
+    <string name="brn_calulate_name">Calculate</string>
     <string name="btn_add_name">Add</string>
     <string name="btn_forms_name">Forms</string>
     <string name="btn_generate_name">Generate</string>

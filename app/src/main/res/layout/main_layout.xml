@@ -29,6 +29,7 @@
                 android:textStyle="bold"
                 android:layout_margin="8dp"
                 app:cornerRadius="16dp"
+                style="?android:attr/buttonBarButtonStyle"
         />
         <Button
                 android:id="@+id/btn_add_item"
@@ -46,6 +47,7 @@
                 android:textStyle="bold"
                 android:layout_margin="8dp"
                 app:cornerRadius="16dp"
+                style="?android:attr/buttonBarButtonStyle"
         />
     </LinearLayout>
 
@@ -70,6 +72,7 @@
                 android:textStyle="bold"
                 android:layout_margin="8dp"
                 app:cornerRadius="16dp"
+                style="?android:attr/buttonBarButtonStyle"
         />
         <Button
                 android:id="@+id/btn_random_items"
@@ -87,6 +90,7 @@
                 android:textStyle="bold"
                 android:layout_margin="8dp"
                 app:cornerRadius="16dp"
+                style="?android:attr/buttonBarButtonStyle"
         />
     </LinearLayout>
 </LinearLayout>
