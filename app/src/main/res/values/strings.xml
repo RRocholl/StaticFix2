@@ -4,4 +4,10 @@
     <string name="btn_add_name">Add</string>
     <string name="btn_forms_name">Forms</string>
     <string name="btn_generate_name">Generate</string>
+
+    <string-array name="input_spinner_array">
+        <item>einfache Häufigkeitsverteilung</item>
+        <item>klassierte Häufigkeitsverteilung</item>
+        <item>zeitliche Häufigkeitsverteilung</item>
+    </string-array>
 </resources>

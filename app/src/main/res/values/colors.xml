@@ -9,10 +9,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- Templatecolor -->
-    <!-- source: https://venngage.com/blog/blue-color-palettes/ first template -->
     <color name="c_dark_blue">#3d5a80</color>
     <color name="middle_blue">#98c1d9</color>
     <color name="light_blue">#e0fbfc</color>
     <color name="organge">#ee6c4d</color>
     <color name="light_black">#293241</color>
+
 </resources>
