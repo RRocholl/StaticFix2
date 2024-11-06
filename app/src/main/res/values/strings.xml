@@ -21,10 +21,20 @@
     <string name="btn_forms_list_item_name">More</string>
 
     <string-array name="attribut_name">
-        <item>Merkmalsträger</item>
+        <item>Merkmalsträger, statistische Einheit</item>
+        <item>Merkmal, (statistische) Variable</item>
+        <item>Merkmalswert</item>
+        <item>Identifikationskriterien</item>
     </string-array>
 
     <string-array name="attribut_description">
         <item>Objekt, das die interessierende Eigenschaft aufweist.</item>
+        <item>interessierende Eigenschaft</item>
+        <item>Wert, den ein Merkmalsträger bei Beobachtung/Messung/Befragung "liefert".</item>
+        <item>Kriterien, die exakt die bei der statistischen Untersuchung berücksichtigten
+            Merkmalsträger beschreiben:\n
+            – sachliche Abgrenzung (wer/was?) \n
+            – zeitliche Abgrenzung (wann?) \n
+            – räumliche Abgrenzung (wo?)</item>
     </string-array>
 </resources>

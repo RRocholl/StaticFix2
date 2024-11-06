@@ -67,7 +67,8 @@ public class MainPage extends AppCompatActivity {
     }
 
     private void navigateToResults() {
-        Intent intent = new Intent(this, FormCollectionPage.class);
+        Intent intent = new Intent(this, ResultPage.class);
+        intent.putExtra("INPUT_DATA",mItems);
         startActivity(intent);
     }
 
