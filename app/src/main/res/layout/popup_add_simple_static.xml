@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:background="@color/light_blue"
+              android:padding="16dp"
+              android:layout_gravity="center"
+              android:orientation="vertical"
+              >
+
+    <EditText
+            android:id="@+id/etn_simple_static"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="@string/etn_simple_static_name"
+            android:minHeight="48dp"
+            android:digits="0123456789"
+    />
+
+
+    <CheckBox
+            android:id="@+id/cb_simple_static"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cb_simple_static_name"
+            android:checked="true"
+    />
+
+        <Button
+                android:id="@+id/btn_add_simple_static"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="@string/btn_add_simple_static_name"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+
+                android:paddingHorizontal="@dimen/btn_padding_horizontal"
+                android:paddingVertical="@dimen/btn_padding_vertical"
+                android:backgroundTint="@color/light_black"
+                android:textColor="@color/white"
+                android:textSize="@dimen/btn_text_size"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="@dimen/btn_layout_margin_horizontal"
+                android:layout_marginVertical="@dimen/btn_layout_margin_vertical"
+                app:cornerRadius="@dimen/corner_radius"
+                style="?android:attr/buttonBarButtonStyle"
+        />
+
+</LinearLayout>

@@ -24,20 +24,21 @@
     >
         <Button
                 android:id="@+id/btn_result_page"
-                android:text="@string/brn_calulate_name"
+                android:text="@string/btn_calulate_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
 
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="8dp"
+                android:paddingHorizontal="@dimen/btn_padding_horizontal"
+                android:paddingVertical="@dimen/btn_padding_vertical"
                 android:backgroundTint="@color/light_black"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="@dimen/btn_text_size"
                 android:fontFamily="sans-serif"
                 android:textStyle="bold"
-                android:layout_margin="8dp"
-                app:cornerRadius="16dp"
+                android:layout_marginHorizontal="@dimen/btn_layout_margin_horizontal"
+                android:layout_marginVertical="@dimen/btn_layout_margin_vertical"
+                app:cornerRadius="@dimen/corner_radius"
                 style="?android:attr/buttonBarButtonStyle"
         />
         <Button
@@ -47,15 +48,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
 
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="8dp"
+                android:paddingHorizontal="@dimen/btn_padding_horizontal"
+                android:paddingVertical="@dimen/btn_padding_vertical"
                 android:backgroundTint="@color/light_black"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="@dimen/btn_text_size"
                 android:fontFamily="sans-serif"
                 android:textStyle="bold"
-                android:layout_margin="8dp"
-                app:cornerRadius="16dp"
+                android:layout_marginHorizontal="@dimen/btn_layout_margin_horizontal"
+                android:layout_marginVertical="@dimen/btn_layout_margin_vertical"
+                app:cornerRadius="@dimen/corner_radius"
                 style="?android:attr/buttonBarButtonStyle"
         />
     </LinearLayout>
@@ -72,15 +74,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
 
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="8dp"
+                android:paddingHorizontal="@dimen/btn_padding_horizontal"
+                android:paddingVertical="@dimen/btn_padding_vertical"
                 android:backgroundTint="@color/light_black"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="@dimen/btn_text_size"
                 android:fontFamily="sans-serif"
                 android:textStyle="bold"
-                android:layout_margin="8dp"
-                app:cornerRadius="16dp"
+                android:layout_marginHorizontal="@dimen/btn_layout_margin_horizontal"
+                android:layout_marginVertical="@dimen/btn_layout_margin_vertical"
+                app:cornerRadius="@dimen/corner_radius"
                 style="?android:attr/buttonBarButtonStyle"
         />
         <Button
@@ -90,15 +93,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
 
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="8dp"
+                android:paddingHorizontal="@dimen/btn_padding_horizontal"
+                android:paddingVertical="@dimen/btn_padding_vertical"
                 android:backgroundTint="@color/light_black"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="@dimen/btn_text_size"
                 android:fontFamily="sans-serif"
                 android:textStyle="bold"
-                android:layout_margin="8dp"
-                app:cornerRadius="16dp"
+                android:layout_marginHorizontal="@dimen/btn_layout_margin_horizontal"
+                android:layout_marginVertical="@dimen/btn_layout_margin_vertical"
+                app:cornerRadius="@dimen/corner_radius"
                 style="?android:attr/buttonBarButtonStyle"
         />
     </LinearLayout>

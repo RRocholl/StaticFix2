@@ -25,10 +25,12 @@
         </activity>
         <activity android:name=".FormCollectionPage"
                   android:parentActivityName=".MainPage"
+                  android:label="Formelsammlung"
 
         />
         <activity android:name=".ResultPage"
                   android:parentActivityName=".MainPage"
+                  android:label="Ergebnisse"
         />
     </application>
 

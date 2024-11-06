@@ -1,6 +1,7 @@
 <resources>
+    <!-- Mainpage -->
     <string name="app_name">StaticFix2</string>
-    <string name="brn_calulate_name">Calculate</string>
+    <string name="btn_calulate_name">Calculate</string>
     <string name="btn_add_name">Add</string>
     <string name="btn_forms_name">Forms</string>
     <string name="btn_generate_name">Generate</string>
@@ -9,5 +10,21 @@
         <item>einfache Häufigkeitsverteilung</item>
         <item>klassierte Häufigkeitsverteilung</item>
         <item>zeitliche Häufigkeitsverteilung</item>
+    </string-array>
+
+    <!-- Mainpage pop up window simple static -->
+    <string name="etn_simple_static_name">Gib eine Zahl ein</string>
+    <string name="cb_simple_static_name">Weitere Werte einfügen</string>
+    <string name="btn_add_simple_static_name">Hinzufügen</string>
+
+    <!-- Formspage -->
+    <string name="btn_forms_list_item_name">More</string>
+
+    <string-array name="attribut_name">
+        <item>Merkmalsträger</item>
+    </string-array>
+
+    <string-array name="attribut_description">
+        <item>Objekt, das die interessierende Eigenschaft aufweist.</item>
     </string-array>
 </resources>
