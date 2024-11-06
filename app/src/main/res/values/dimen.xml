@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="btn_text_size">16sp</dimen>
+    <dimen name="btn_more_text_size">12sp</dimen>
+
     <dimen name="btn_padding_horizontal">12dp</dimen>
     <dimen name="btn_padding_vertical">8dp</dimen>
     <dimen name="btn_layout_margin_horizontal">8dp</dimen>
