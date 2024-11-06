@@ -1,4 +1,4 @@
-package de.fhdw.rroch.staticfix2;
+package de.fhdw.rroch.staticfix2.Pages;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,9 @@ import android.view.ViewGroup;
 import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import de.fhdw.rroch.staticfix2.R;
 
 import java.util.ArrayList;
-
-import static androidx.core.text.SpannableStringBuilderKt.color;
 
 public class MainPage extends AppCompatActivity {
 

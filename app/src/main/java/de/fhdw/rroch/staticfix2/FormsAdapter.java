@@ -1,4 +1,4 @@
-package de.fhdw.rroch.staticfix2.Pages;
+package de.fhdw.rroch.staticfix2;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import de.fhdw.rroch.staticfix2.R;
 
 public class FormsAdapter extends BaseAdapter {
 

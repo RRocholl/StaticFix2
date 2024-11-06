@@ -1,10 +1,10 @@
-package de.fhdw.rroch.staticfix2;
+package de.fhdw.rroch.staticfix2.Pages;
 
 import android.os.Bundle;
 import android.widget.ListView;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import de.fhdw.rroch.staticfix2.Pages.FormsAdapter;
+import de.fhdw.rroch.staticfix2.FormsAdapter;
+import de.fhdw.rroch.staticfix2.R;
 
 public class FormCollectionPage extends AppCompatActivity {
 
