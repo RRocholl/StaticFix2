@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import de.fhdw.rroch.staticfix2.R;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainPage extends AppCompatActivity {
 
@@ -49,8 +50,7 @@ public class MainPage extends AppCompatActivity {
         mBtnNavigateToFormsCollection.setOnClickListener(v -> navigateToFormsCollection());
         mBtnNavigateToResults.setOnClickListener(v -> navigateToResults());
         mBtnAddItem.setOnClickListener(v -> makeSimpleStaticPopUpWindow());
-        mBtnRandomItems.setOnClickListener(v -> {
-        });
+        mBtnRandomItems.setOnClickListener(v -> makeGenerateRandomPopUpWindow());
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
@@ -80,7 +80,7 @@ public class MainPage extends AppCompatActivity {
     private void makeSimpleStaticPopUpWindow() {
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.popup_add_simple_static, null);
+        View popupView = inflater.inflate(R.layout.popup_add_simple_static,null);
 
         PopupWindow popupWindow = new PopupWindow(
                 popupView,
@@ -130,6 +130,46 @@ public class MainPage extends AppCompatActivity {
                     "Eingabe: " + inputText,
                     Toast.LENGTH_SHORT).show();
         });
+        popupWindow.showAtLocation(findViewById(android.R.id.content), Gravity.CENTER, 0, 0);
+    }
+
+    private void makeGenerateRandomPopUpWindow() {
+
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.popup_randomvalues,null);
+
+        PopupWindow popupWindow = new PopupWindow(
+                popupView,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                true
+        );
+
+        EditText editTextCount = popupView.findViewById(R.id.etn_count_random);
+        EditText editTextMin = popupView.findViewById(R.id.etn_min_random);
+        EditText editTextMax = popupView.findViewById(R.id.et_max_random);
+        Button buttonGenerateRandom = popupView.findViewById(R.id.btn_genrate_radnom);
+
+
+        buttonGenerateRandom.setOnClickListener(v -> {
+
+            int inputTextCount = Integer.parseInt(editTextCount.getText().toString());
+            int inputTextMin = Integer.parseInt(editTextMin.getText().toString());
+            int inputTextMax = Integer.parseInt(editTextMax.getText().toString());
+            Random random = new Random();
+
+            for (int i = 0; i < inputTextCount; i++) {
+                mItems.add(random.nextInt((inputTextMax - inputTextMin) + 1) + inputTextMin);
+            }
+            popupWindow.dismiss();
+            buttonGenerateRandom.setEnabled(!mItems.isEmpty());
+            updateButtonState();
+
+            Toast.makeText(MainPage.this,
+                    inputTextCount + " Zahlen generiert",
+                    Toast.LENGTH_SHORT).show();
+        });
+
         popupWindow.showAtLocation(findViewById(android.R.id.content), Gravity.CENTER, 0, 0);
     }
 }
