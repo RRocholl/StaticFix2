@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Calculate {
 
     public String outPutData(ArrayList<Integer> input){
-        String result = "";
+        String result;
         if(!input.isEmpty()){
             result = input.toString();
             //result = result.substring(result.length() - 2);

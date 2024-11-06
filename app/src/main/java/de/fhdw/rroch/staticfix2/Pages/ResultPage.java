@@ -10,15 +10,17 @@ import de.fhdw.rroch.staticfix2.R;
 import java.util.ArrayList;
 
 public class ResultPage extends AppCompatActivity {
-    private ArrayList<Integer> mItems;
 
-    private TextView mRawData, mOrganizedData;
-    private Calculate mCalculate = new Calculate();
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.result_layout);
+
+        ArrayList<Integer> mItems;
+
+        TextView mRawData, mOrganizedData;
+        Calculate mCalculate = new Calculate();
         mRawData = findViewById(R.id.tv_result_raw_input);
         mOrganizedData = findViewById(R.id.tv_result_organized_input);
         String outPutHelper;
@@ -34,11 +36,6 @@ public class ResultPage extends AppCompatActivity {
         } else {
             mItems = (ArrayList<Integer>) savedInstanceState.getSerializable("INPUT_DATA");
         }
-        // TODO: folgende 4 zeilen Löschen
-        mItems.add(333);
-        mItems.add(2);
-        mItems.add(3334);
-        mItems.add(1);
 
         outPutHelper = "Eingabe: " + mCalculate.outPutData(mItems);
         mRawData.setText(outPutHelper);
