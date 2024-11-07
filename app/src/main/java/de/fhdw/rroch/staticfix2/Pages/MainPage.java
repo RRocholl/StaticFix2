@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
+import android.view.inputmethod.EditorInfo;
 import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,19 +66,19 @@ public class MainPage extends AppCompatActivity {
 
     private void navigateToResults() {
         Intent intent = new Intent(this, ResultPage.class);
-        intent.putExtra("INPUT_DATA",mItems);
+        intent.putExtra("INPUT_DATA", mItems);
         startActivity(intent);
     }
 
     private void updateButtonState() {
         mBtnNavigateToResults.setEnabled(!mItems.isEmpty());
-       // mBtnNavigateToResults.setBackground((!mItems.isEmpty())?10011097:getColor(R.color.light_blue));
+        // mBtnNavigateToResults.setBackground((!mItems.isEmpty())?10011097:getColor(R.color.light_blue));
     }
 
     private void makeSimpleStaticPopUpWindow() {
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.popup_add_simple_static,null);
+        View popupView = inflater.inflate(R.layout.popup_add_simple_static, null);
 
         PopupWindow popupWindow = new PopupWindow(
                 popupView,
@@ -97,20 +95,30 @@ public class MainPage extends AppCompatActivity {
 
         checkBox.setChecked(true);
 
-        editTextNumber.addTextChangedListener(new TextWatcher()
-                                              {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // Enable "Add" button only if EditText is not empty
-                buttonAdd.setEnabled(!s.toString().trim().isEmpty());
+        editTextNumber.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                buttonAdd.performClick();
             }
+            return false;
+        });
 
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        }
+        editTextNumber.addTextChangedListener(new TextWatcher() {
+                                                  @Override
+                                                  public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                                                  }
+
+                                                  @Override
+                                                  public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                                      // Enable "Add" button only if EditText is not empty
+                                                      boolean mEditTextIsNotEmpty =!s.toString().trim().isEmpty();
+                                                      buttonAdd.setEnabled(mEditTextIsNotEmpty);
+                                                      buttonAdd.setBackgroundColor(mEditTextIsNotEmpty ? getColor(R.color.light_black) : getColor(R.color.organge));
+                                                  }
+
+                                                  @Override
+                                                  public void afterTextChanged(Editable s) {
+                                                  }
+                                              }
         );
 
         buttonAdd.setOnClickListener(v -> {
@@ -136,7 +144,7 @@ public class MainPage extends AppCompatActivity {
     private void makeGenerateRandomPopUpWindow() {
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.popup_randomvalues,null);
+        View popupView = inflater.inflate(R.layout.popup_randomvalues, null);
 
         PopupWindow popupWindow = new PopupWindow(
                 popupView,
