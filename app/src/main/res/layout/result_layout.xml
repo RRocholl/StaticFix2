@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@color/light_blue"
 >
 
     <ScrollView
@@ -11,60 +13,353 @@
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
 
-            <TextView
-                    android:id="@+id/tv_result_raw_input"
+
+            <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="raw data"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal"
-            />
-
-            <TextView
-                    android:id="@+id/tv_result_organized_input"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="organized data"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal"
-
-            />
-            <TextView
-                    android:id="@+id/tv3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Häufigkeitsverteilungen"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-
-            />
-
-
-            <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                <TableLayout
-                        android:id="@+id/tl_result_page"
-                        android:layout_width="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="12dp">
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent">
-                </TableLayout>
-            </HorizontalScrollView>
+                    <TextView
+                            android:id="@+id/tv_result_raw_input_hard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Eingabe: "
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:layout_margin="5dp"
+                    />
+                    <TextView
+                            android:id="@+id/tv_result_raw_input"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="raw data"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="5dp"
 
-            <TextView
-                    android:id="@+id/tv4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lageparameter"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
+                    />
+                    <TextView
+                            android:id="@+id/tv_result_organized_input_hard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Organisiert: "
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:layout_margin="5dp"
 
-            />
+                    />
+                    <TextView
+                            android:id="@+id/tv_result_organized_input"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="organized data"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="5dp"
+
+
+                    />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="16dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="12dp"
+                    android:padding="10dp"
+            >
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:id="@+id/tv3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Häufigkeitsverteilungen"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:layout_margin="5dp"
+
+
+                    />
+                    <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                        <TableLayout
+                                android:id="@+id/tl_result_page"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                        />
+                    </HorizontalScrollView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="16dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="12dp"
+                    android:padding="10dp"
+            >
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lageparameter"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:layout_margin="5dp"
+
+
+                    />
+                    <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                    >
+
+                        <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                                android:gravity="center"
+                        >
+                            <TextView
+                                    android:text="Modus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                            <TextView
+                                    android:id="@+id/tv_result_modus_data"
+                                    android:text="TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                        </TableRow>
+
+                        <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                                android:gravity="center"
+                        >
+                            <TextView
+                                    android:text="Median"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                            <TextView
+                                    android:id="@+id/tv_result_median_data"
+                                    android:text="TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                        </TableRow>
+
+                        <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                                android:gravity="center"
+                        >
+                            <TextView
+                                    android:text="Quatil"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                            <TextView
+                                    android:id="@+id/tv_result_quantile_data"
+                                    android:text="TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                        </TableRow>
+
+                        <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                                android:gravity="center"
+                        >
+                            <TextView
+                                    android:text="Aritnetisches Mittel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                            <TextView
+                                    android:id="@+id/tv_result_arithmetic_mean_data"
+                                    android:text="TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                        </TableRow>
+
+                        <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                                android:gravity="center"
+                        >
+                            <TextView
+                                    android:text="Geometrisches Mittel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                            <TextView
+                                    android:id="@+id/tv_result_geometric_mean_data"
+                                    android:text="TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                        </TableRow>
+
+                    </TableLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="16dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="12dp"
+                    android:padding="10dp"
+            >
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Streungsparameter"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:layout_margin="5dp"
+
+
+                    />
+                    <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                        >
+                            <TextView
+                                    android:text="Spanweite"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            <TextView
+                                    android:id="@+id/tv_result_span_data"
+                                    android:text="TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                        </TableRow>
+
+                        <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                        >
+                            <TextView
+                                    android:text="Mittlere Absolute Abweichung"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                            <TextView
+                                    android:id="@+id/tv_result_mean_absolute_deviation_data"
+                                    android:text="TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                        </TableRow>
+
+                        <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                        >
+                            <TextView
+                                    android:text="(empirische) Varianz"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            <TextView
+                                    android:id="@+id/tv_result_empirical_variance_data"
+                                    android:text="TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                        </TableRow>
+
+                        <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                        >
+                            <TextView
+                                    android:text="(empirische) Standartabweichung"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            <TextView
+                                    android:id="@+id/tv_result_empirical_standard_deviation_data"
+                                    android:text="TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                        </TableRow>
+
+                        <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                        >
+                            <TextView
+                                    android:text="Variantionskoeffizienten"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            <TextView
+                                    android:id="@+id/tv_result_coefficients_of_variation_data"
+                                    android:text="TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                        </TableRow>
+
+                        <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                        >
+                            <TextView
+                                    android:text="Quatilsabstand"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            <TextView
+                                    android:id="@+id/tv_result_interquartile_range_data"
+                                    android:text="TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                        </TableRow>
+
+                    </TableLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </ScrollView>
