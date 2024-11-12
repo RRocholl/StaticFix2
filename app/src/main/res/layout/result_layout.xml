@@ -183,11 +183,28 @@
                                 android:gravity="center"
                         >
                             <TextView
-                                    android:text="Quatil"
+                                    android:text="Quatil 25"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"/>
                             <TextView
-                                    android:id="@+id/tv_result_quantile_data"
+                                    android:id="@+id/tv_result_quantile_25_data"
+                                    android:text="TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                        </TableRow>
+
+                        <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
+                                android:gravity="center"
+                        >
+                            <TextView
+                                    android:text="Quatil 75"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                            <TextView
+                                    android:id="@+id/tv_result_quantile_75_data"
                                     android:text="TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"/>

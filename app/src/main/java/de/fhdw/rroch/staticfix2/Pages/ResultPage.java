@@ -17,7 +17,7 @@ import java.util.List;
 public class ResultPage extends AppCompatActivity {
     private String[] tableHeader = {"ai","h(ai)","f(ai)","H(ai)","F(ai)","HR(ai)","FR(ai)"};
     private TextView mRawData, mOrganizedData;
-    private TextView mMedian, mModus, mQuantile, mArithmeticMean, mGeometricMean;
+    private TextView mMedian, mModus, mQuantile25, mQuantile75, mArithmeticMean, mGeometricMean;
     private TextView mSpan, mMeanAbsoluteDeviation, mEmpiricalVariance, mEmpiricalStandardDeviation, mCoefficientsOfVariation, mInterquartileRange;
     private TableLayout tableLayout;
     private Calculate mCalculate = new Calculate();
@@ -58,7 +58,8 @@ public class ResultPage extends AppCompatActivity {
         tableLayout = findViewById(R.id.tl_result_page);
         mMedian = findViewById(R.id.tv_result_median_data);
         mModus = findViewById(R.id.tv_result_modus_data);
-        mQuantile = findViewById(R.id.tv_result_quantile_data);
+        mQuantile25 = findViewById(R.id.tv_result_quantile_25_data);
+        mQuantile75 = findViewById(R.id.tv_result_quantile_75_data);
         mArithmeticMean = findViewById(R.id.tv_result_arithmetic_mean_data);
         mGeometricMean = findViewById(R.id.tv_result_geometric_mean_data);
         mSpan = findViewById(R.id.tv_result_span_data);
@@ -141,9 +142,10 @@ public class ResultPage extends AppCompatActivity {
     private void addDataToLocationParameters(double[] input) {
         mMedian.setText(String.valueOf(input[0]));
         mModus.setText(String.valueOf(input[1]));
-        mQuantile.setText(String.valueOf(input[2]));
-        mArithmeticMean.setText(String.valueOf(input[3]));
-        mGeometricMean.setText(String.valueOf(input[4]));
+        mQuantile25.setText(String.valueOf(input[2]));
+        mQuantile75.setText(String.valueOf(input[3]));
+        mArithmeticMean.setText(String.valueOf(input[4]));
+        mGeometricMean.setText(String.valueOf(input[5]));
     }
 
     private void addDataToScatteringParameters(double[] input) {

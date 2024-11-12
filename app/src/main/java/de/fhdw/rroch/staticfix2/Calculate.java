@@ -1,8 +1,6 @@
 package de.fhdw.rroch.staticfix2;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static java.util.Collections.max;
 
@@ -165,13 +163,14 @@ public class Calculate {
 
     //Lageparameter
     public double[] createLocationParameters(ArrayList<Integer> input) {
-        double[] result = new double[5];
+        double[] result = new double[6];
         if (!input.isEmpty()) {
             result[0] = modus(input);
             result[1] = median(input);
-            result[2] = quantile(input);
-            result[3] = arithmeticMean(input);
-            result[4] = geometricMean(input);
+            result[2] = quantile(input, 0.25);
+            result[3] = quantile(input, 0.75);
+            result[4] = arithmeticMean(input);
+            result[5] = geometricMean(input);
 
         }else{
             Arrays.fill(result, -1.0);
@@ -179,37 +178,101 @@ public class Calculate {
         return result;
     }
 
-    private double modus (ArrayList<Integer> input) {
-        double result;
-        result = -1.0;
-        return result;
-    }
 
-    private double median (ArrayList<Integer> input) {
-        double result;
-        input.sort(Integer::compareTo);
-        if (input.size() % 2 == 0) {
-            result = input.get(input.size() / 2);
-        }else {
-            int h1 = input.size();
-            int h2 = input.size() -1;
-            result = (double) (input.get(h1 / 2) + input.get(h2 / 2)) /2;
-            result = Math.round(result * 1000.0) / 1000.0;
+    // Calculate: Location Parameters
+
+    public double modus(ArrayList<Integer> input) {
+        if (input.isEmpty()) {
+            return -1;
         }
-        return result;
+
+        // Count the frequency of each element
+        HashMap<Integer, Integer> frequencyMap = new HashMap<>();
+        for (Integer number : input) {
+            frequencyMap.put(number, frequencyMap.getOrDefault(number, 0) + 1);
+        }
+
+        // Find the mode: the element with the highest frequency
+        int maxFrequency = 0;
+        double mode = -1;
+
+        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+            int number = entry.getKey();
+            int frequency = entry.getValue();
+
+            if (frequency > maxFrequency) {
+                maxFrequency = frequency;
+                mode = number;
+            } else if (frequency == maxFrequency && number < mode) {
+                mode = number;
+            }
+        }
+
+        return mode;
     }
 
-    private double quantile(ArrayList<Integer> input) {
-        return -1.0;
+    private double median(ArrayList<Integer> input) {
+        if (input.isEmpty()) {
+            return -1.0;
+        }
+
+        int size = input.size();
+
+        if (size % 2 == 0) {
+            int middle1 = input.get((size / 2) - 1);
+            int middle2 = input.get(size / 2);
+            return (middle1 + middle2) / 2.0;
+        } else {
+            return (double) input.get(size / 2);
+        }
+    }
+
+    private double quantile(ArrayList<Integer> input, double percentile) {
+        if (input.isEmpty()) {
+            return -1;
+        }
+
+        if (percentile < 0 || percentile > 1) {
+            throw new IllegalArgumentException("Percentile must be between 0 and 1.");
+        }
+
+        // Sort the input list to find the quantile
+        Collections.sort(input);
+
+        // Compute the index of the quantile position
+        int index = (int) Math.ceil(percentile * (input.size() - 1));
+
+        // Return the element at the quantile index
+        return input.get(index);
     }
 
     private double arithmeticMean(ArrayList<Integer> input) {
-        return -1.0;
+        if (input.isEmpty()) {
+            return -1;
+        }
+        double sum = 0;
+        for (Integer number : input) {
+            sum += number;
+        }
+        return sum / input.size();
     }
 
     private double geometricMean(ArrayList<Integer> input) {
-        return -1.0;
+        if (input.isEmpty()) {
+            return -1;
+        }
+
+        double potens = 1.0;
+
+        for (Integer integer : input) {
+            potens *= integer;
+        }
+
+        int size = input.size();
+
+        return Math.pow(potens, 1.0 / size);
     }
+
 
     //Streungsparameter
     public double[] createScatteringParameters(ArrayList<Integer> input) {
@@ -228,27 +291,66 @@ public class Calculate {
         return result;
     }
 
+    // Calculate: Scattering Parameters
+
     private double span(ArrayList<Integer> input) {
-        return -1.0;
+        if (input.isEmpty()) {
+            return -1;
+        }
+
+        int maxValue = Integer.MAX_VALUE;
+        int minValue = Integer.MIN_VALUE;
+
+        return (double) maxValue - minValue;
     }
 
     private double meanAbsoluteDeviation(ArrayList<Integer> input) {
-        return -1.0;
+        if (input.isEmpty()) {
+            return -1;
+        }
+
+        double deviation = 0.0;
+        for (Integer number : input) {
+            deviation += Math.abs(number - arithmeticMean(input));
+        }
+        return deviation / input.size();
     }
 
     private double empiricalVariance(ArrayList<Integer> input) {
-        return -1.0;
+        if (input.isEmpty()) {
+            return -1;
+        }
+
+        double variance = 0.0;
+
+        for (Integer number : input) {
+            variance += Math.pow(number - arithmeticMean(input), 2);
+        }
+        return variance / input.size();
     }
 
     private double empiricalStandardDeviation(ArrayList<Integer> input) {
-        return -1.0;
+        if (input.isEmpty()) {
+            return -1;
+        }
+
+        return Math.sqrt(empiricalVariance(input));
     }
 
     private double coefficientsOfVariation(ArrayList<Integer> input) {
-        return -1.0;
+        if (input.isEmpty()) {
+            return -1;
+        }
+
+        return empiricalStandardDeviation(input) / arithmeticMean(input);
     }
 
     private double interquartileRange(ArrayList<Integer> input) {
-        return -1.0;
+        if (input.isEmpty()) {
+            return -1;
+        }
+
+        return quantile(input, 0.75) - quantile(input,0.25);
     }
 }
+
