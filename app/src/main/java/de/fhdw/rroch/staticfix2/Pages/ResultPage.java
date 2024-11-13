@@ -1,6 +1,8 @@
 package de.fhdw.rroch.staticfix2.Pages;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
@@ -8,6 +10,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import de.fhdw.rroch.staticfix2.Calculate;
 import de.fhdw.rroch.staticfix2.R;
 
@@ -112,15 +115,7 @@ public class ResultPage extends AppCompatActivity {
     }
 
     private void addDataToTableFrequency(TableLayout tableLayout, List<Double[]> data) {
-        TableRow headerRow = new TableRow(this);
-        for (String header : tableHeader) {
-            TextView headerText = new TextView(this);
-            headerText.setText(header);
-            headerText.setPadding(16, 16, 16, 16);
-            headerText.setGravity(Gravity.CENTER);
-            headerRow.addView(headerText);
-        }
-        tableLayout.addView(headerRow);
+        int headerCounter = 0;
 
         for (Double[] row : data) {
             TableRow tableRow = new TableRow(this);
@@ -128,6 +123,15 @@ public class ResultPage extends AppCompatActivity {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
             ));
+            //Add table header
+            TextView headerTextView = new TextView(this);
+            headerTextView.setText(tableHeader[headerCounter]);
+            headerTextView.setPadding(16, 16, 16, 16);
+            headerTextView.setGravity(Gravity.CENTER);
+            tableRow.addView(headerTextView);
+            headerCounter++;
+
+            //Add data
             for (Double cell : row) {
                 TextView textView = new TextView(this);
                 textView.setText(cell.toString());
