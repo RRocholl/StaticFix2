@@ -1,8 +1,6 @@
 package de.fhdw.rroch.staticfix2.Pages;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
@@ -10,7 +8,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import de.fhdw.rroch.staticfix2.Calculate;
 import de.fhdw.rroch.staticfix2.R;
 
@@ -18,12 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResultPage extends AppCompatActivity {
-    private String[] tableHeader = {"ai","h(ai)","f(ai)","H(ai)","F(ai)","HR(ai)","FR(ai)"};
+    private final String[] tableHeader = {"ai", "h(ai)", "f(ai)", "H(ai)", "F(ai)", "HR(ai)", "FR(ai)"};
     private TextView mRawData, mOrganizedData;
     private TextView mMedian, mModus, mQuantile25, mQuantile75, mArithmeticMean, mGeometricMean;
     private TextView mSpan, mMeanAbsoluteDeviation, mEmpiricalVariance, mEmpiricalStandardDeviation, mCoefficientsOfVariation, mInterquartileRange;
     private TableLayout tableLayout;
-    private Calculate mCalculate = new Calculate();
+    private final Calculate mCalculate = new Calculate();
     private ArrayList<Integer> mItems, mOrderedInputData;
     private List<Double[]> mFrequencyDistribution;
     private double[] mLocationParameters;
@@ -37,11 +34,7 @@ public class ResultPage extends AppCompatActivity {
         initializeViews();
 
         if (savedInstanceState != null) {
-            mItems = (ArrayList<Integer>) savedInstanceState.getSerializable("INPUT_DATA");
-            mOrderedInputData = (ArrayList<Integer>) savedInstanceState.getSerializable("ORDERED_INPUT_DATA");
-            mFrequencyDistribution = (List<Double[]>) savedInstanceState.getSerializable("FREQUENCY_DISTRIBUTION");
-            mLocationParameters = savedInstanceState.getDoubleArray("LOCATION_PARAMETERS");
-            mScatteringParameters = savedInstanceState.getDoubleArray("SCATTERING_PARAMETERS");
+            retrieveSavedData(savedInstanceState);
         } else {
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
@@ -83,39 +76,26 @@ public class ResultPage extends AppCompatActivity {
     private void displayData() {
         mRawData.setText(mItems.toString());
         mOrganizedData.setText(mOrderedInputData.toString());
-        addDataToTableFrequency(tableLayout, mFrequencyDistribution);
+        addTableHeader();
+        addDataToTableFrequency(mFrequencyDistribution);
         addDataToLocationParameters(mLocationParameters);
         addDataToScatteringParameters(mScatteringParameters);
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+    private void addTableHeader() {
+        TableRow headerRow = new TableRow(this);
 
-        outState.putSerializable("INPUT_DATA", mItems);
-        outState.putSerializable("ORDERED_INPUT_DATA", mOrderedInputData);
-        outState.putSerializable("FREQUENCY_DISTRIBUTION", (ArrayList<Double[]>) mFrequencyDistribution);
-        outState.putDoubleArray("LOCATION_PARAMETERS", mLocationParameters);
-        outState.putDoubleArray("SCATTERING_PARAMETERS", mScatteringParameters);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        mItems = (ArrayList<Integer>) savedInstanceState.getSerializable("INPUT_DATA");
-        mOrderedInputData = (ArrayList<Integer>) savedInstanceState.getSerializable("ORDERED_INPUT_DATA");
-        mFrequencyDistribution = (List<Double[]>) savedInstanceState.getSerializable("FREQUENCY_DISTRIBUTION");
-        mLocationParameters = savedInstanceState.getDoubleArray("LOCATION_PARAMETERS");
-        mScatteringParameters = savedInstanceState.getDoubleArray("SCATTERING_PARAMETERS");
-
-        if (mItems != null) {
-            displayData();
+        for (String header : tableHeader) {
+            TextView headerTextView = new TextView(this);
+            headerTextView.setText(header);
+            headerTextView.setPadding(16, 16, 16, 16);
+            headerTextView.setGravity(Gravity.CENTER);
+            headerRow.addView(headerTextView);
         }
+        tableLayout.addView(headerRow);
     }
 
-    private void addDataToTableFrequency(TableLayout tableLayout, List<Double[]> data) {
-        int headerCounter = 0;
+    private void addDataToTableFrequency(List<Double[]> data) {
 
         for (Double[] row : data) {
             TableRow tableRow = new TableRow(this);
@@ -123,15 +103,7 @@ public class ResultPage extends AppCompatActivity {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
             ));
-            //Add table header
-            TextView headerTextView = new TextView(this);
-            headerTextView.setText(tableHeader[headerCounter]);
-            headerTextView.setPadding(16, 16, 16, 16);
-            headerTextView.setGravity(Gravity.CENTER);
-            tableRow.addView(headerTextView);
-            headerCounter++;
 
-            //Add data
             for (Double cell : row) {
                 TextView textView = new TextView(this);
                 textView.setText(cell.toString());
@@ -144,20 +116,42 @@ public class ResultPage extends AppCompatActivity {
     }
 
     private void addDataToLocationParameters(double[] input) {
-        mMedian.setText(String.valueOf(input[0]));
-        mModus.setText(String.valueOf(input[1]));
-        mQuantile25.setText(String.valueOf(input[2]));
-        mQuantile75.setText(String.valueOf(input[3]));
-        mArithmeticMean.setText(String.valueOf(input[4]));
-        mGeometricMean.setText(String.valueOf(input[5]));
+        if (input != null) {
+            mMedian.setText(String.valueOf(input[0]));
+            mModus.setText(String.valueOf(input[1]));
+            mQuantile25.setText(String.valueOf(input[2]));
+            mQuantile75.setText(String.valueOf(input[3]));
+            mArithmeticMean.setText(String.valueOf(input[4]));
+            mGeometricMean.setText(String.valueOf(input[5]));
+        }
     }
 
     private void addDataToScatteringParameters(double[] input) {
-        mSpan.setText(String.valueOf(input[0]));
-        mMeanAbsoluteDeviation.setText(String.valueOf(input[1]));
-        mEmpiricalVariance.setText(String.valueOf(input[2]));
-        mEmpiricalStandardDeviation.setText(String.valueOf(input[3]));
-        mCoefficientsOfVariation.setText(String.valueOf(input[4]));
-        mInterquartileRange.setText(String.valueOf(input[5]));
+        if (input != null) {
+            mSpan.setText(String.valueOf(input[0]));
+            mMeanAbsoluteDeviation.setText(String.valueOf(input[1]));
+            mEmpiricalVariance.setText(String.valueOf(input[2]));
+            mEmpiricalStandardDeviation.setText(String.valueOf(input[3]));
+            mCoefficientsOfVariation.setText(String.valueOf(input[4]));
+            mInterquartileRange.setText(String.valueOf(input[5]));
+        }
+    }
+
+    private void retrieveSavedData(Bundle savedInstanceState) {
+        mItems = (ArrayList<Integer>) savedInstanceState.getSerializable("INPUT_DATA");
+        mOrderedInputData = (ArrayList<Integer>) savedInstanceState.getSerializable("ORDERED_INPUT_DATA");
+        mFrequencyDistribution = (List<Double[]>) savedInstanceState.getSerializable("FREQUENCY_DISTRIBUTION");
+        mLocationParameters = savedInstanceState.getDoubleArray("LOCATION_PARAMETERS");
+        mScatteringParameters = savedInstanceState.getDoubleArray("SCATTERING_PARAMETERS");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("INPUT_DATA", mItems);
+        outState.putSerializable("ORDERED_INPUT_DATA", mOrderedInputData);
+        outState.putSerializable("FREQUENCY_DISTRIBUTION", (ArrayList<Double[]>) mFrequencyDistribution);
+        outState.putDoubleArray("LOCATION_PARAMETERS", mLocationParameters);
+        outState.putDoubleArray("SCATTERING_PARAMETERS", mScatteringParameters);
     }
 }
