@@ -2,10 +2,9 @@ package de.fhdw.rroch.staticfix2;
 
 import java.util.*;
 
-import static java.util.Collections.max;
-
 public class Calculate {
-
+    private final static double roundDigit = 1000.0;
+    //Math.round(sum * roundDigit) / roundDigit
 
 
     public ArrayList<Integer> organizedData(ArrayList<Integer> input) {
@@ -86,7 +85,7 @@ public class Calculate {
         if (!input.isEmpty()) {
             for (int i = 0; i < input.size(); i++) {
                 double helper = (double) input.get(i) / (double) n;
-                helper = Math.round(helper * 100.000) / 100.000;
+                helper = Math.round(helper * roundDigit) / roundDigit;
                 result.add(helper);
             }
         }else {
@@ -118,7 +117,7 @@ public class Calculate {
             double sum = 0.0;
             for (Double aDouble : input) {
                 sum += aDouble;
-                sum = Math.round(sum * 100.000) / 100.0000;
+                sum = Math.round(sum * roundDigit) / roundDigit;
                 result.add(sum);
             }
         } else {
@@ -153,7 +152,8 @@ public class Calculate {
             result.add(sum);
             for (int i = counter; i >= 1; i--) {
                 sum += input.get(i);
-                sum = Math.round(sum * 100.000) / 100.000;                result.add(0,sum);
+                sum = Math.round(sum * roundDigit) / roundDigit;
+                result.add(0,sum);
             }
         } else {
             result.add(-1.0);
@@ -165,12 +165,13 @@ public class Calculate {
     public double[] createLocationParameters(ArrayList<Integer> input) {
         double[] result = new double[6];
         if (!input.isEmpty()) {
-            result[0] = modus(input);
-            result[1] = median(input);
-            result[2] = quantile(input, 0.25);
-            result[3] = quantile(input, 0.75);
-            result[4] = arithmeticMean(input);
-            result[5] = geometricMean(input);
+            //the results added rounded in the array
+            result[0] = Math.round(modus(input) * roundDigit) / roundDigit;
+            result[1] = Math.round(median(input) * roundDigit) / roundDigit;
+            result[2] = Math.round(quantile(input, 0.25) * roundDigit) / roundDigit;
+            result[3] = Math.round(quantile(input, 0.75) * roundDigit) / roundDigit;
+            result[4] = Math.round(arithmeticMean(input) * roundDigit) / roundDigit;
+            result[5] = Math.round(geometricMean(input) * roundDigit) / roundDigit;
 
         }else{
             Arrays.fill(result, -1.0);
@@ -278,12 +279,12 @@ public class Calculate {
     public double[] createScatteringParameters(ArrayList<Integer> input) {
         double[] result = new double[6];
         if (!input.isEmpty()) {
-            result[0] = span(input);
-            result[1] = meanAbsoluteDeviation(input);
-            result[2] = empiricalVariance(input);
-            result[3] = empiricalStandardDeviation(input);
-            result[4] = coefficientsOfVariation(input);
-            result[5] = interquartileRange(input);
+            result[0] = Math.round(span(input) * roundDigit) / roundDigit;
+            result[1] = Math.round(meanAbsoluteDeviation(input) * roundDigit) / roundDigit;
+            result[2] = Math.round(empiricalVariance(input) * roundDigit) / roundDigit;
+            result[3] = Math.round(empiricalStandardDeviation(input) * roundDigit) / roundDigit;
+            result[4] = Math.round(coefficientsOfVariation(input) * roundDigit) / roundDigit;
+            result[5] = Math.round(interquartileRange(input) * roundDigit) / roundDigit;
 
         }else{
             Arrays.fill(result, -1.0);
@@ -298,10 +299,13 @@ public class Calculate {
             return -1;
         }
 
-        int maxValue = Integer.MAX_VALUE;
-        int minValue = Integer.MIN_VALUE;
+        ArrayList<Integer> orgenised = new ArrayList<>();
+        orgenised.addAll(input);
+        orgenised.sort(Integer::compareTo);
+        double minValue = orgenised.get(0);
+        double maxValue = orgenised.get(orgenised.size() - 1);
 
-        return (double) maxValue - minValue;
+        return maxValue - minValue;
     }
 
     private double meanAbsoluteDeviation(ArrayList<Integer> input) {
