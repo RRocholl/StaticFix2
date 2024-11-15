@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.*;
 import android.view.inputmethod.EditorInfo;
 import android.widget.*;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import de.fhdw.rroch.staticfix2.MainAdapter;
@@ -47,6 +48,29 @@ public class MainPage extends AppCompatActivity {
         mBtnAddItem.setOnClickListener(v -> makeSimpleStaticPopUpWindow());
         mBtnRandomItems.setOnClickListener(v -> makeGenerateRandomPopUpWindow());
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // Daten der Liste speichern
+        outState.putIntegerArrayList("ITEMS_LIST", mItems);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Daten der Liste wiederherstellen
+        mItems = savedInstanceState.getIntegerArrayList("ITEMS_LIST");
+
+        // Adapter aktualisieren
+        if (mItems == null) {
+            mItems = new ArrayList<>();
+        }
+        mAdapter = new MainAdapter(this, mItems);
+        mListView.setAdapter(mAdapter);
+
+        updateButtonState();
     }
 
     private void navigateToFormsCollection() {
