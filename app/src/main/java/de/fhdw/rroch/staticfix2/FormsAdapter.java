@@ -10,26 +10,28 @@ import android.widget.TextView;
 
 public class FormsAdapter extends BaseAdapter {
 
-    private Context context;
-    private String[] headers;
-    private String[] bodies;
-    private boolean[] isBodyVisible;
+    // initialize the global objects
+    private final Context mContext;
+    private final String[] mHeaders;
+    private final String[] mBodies;
+    private final boolean[] mIsBodyVisible;
 
+    // constructor the object
     public FormsAdapter(Context context, String[] headers, String[] bodies) {
-        this.context = context;
-        this.headers = headers;
-        this.bodies = bodies;
-        this.isBodyVisible = new boolean[headers.length];
+        this.mContext = context;
+        this.mHeaders = headers;
+        this.mBodies = bodies;
+        this.mIsBodyVisible = new boolean[headers.length];
     }
 
     @Override
     public int getCount() {
-        return headers.length;
+        return mHeaders.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return headers[position];
+        return mHeaders[position];
     }
 
     @Override
@@ -40,20 +42,22 @@ public class FormsAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.forms_list_item, parent, false);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.forms_list_item, parent, false);
         }
 
         TextView mHeaderText = convertView.findViewById(R.id.headerText);
         TextView mBodyText = convertView.findViewById(R.id.bodyText);
         Button mButtonMore = convertView.findViewById(R.id.moreButton);
 
-        mHeaderText.setText(headers[position]);
-        mBodyText.setText(bodies[position]);
+        mHeaderText.setText(mHeaders[position]);
+        mBodyText.setText(mBodies[position]);
 
-        mBodyText.setVisibility(isBodyVisible[position] ? View.VISIBLE : View.GONE);
+        mBodyText.setVisibility(mIsBodyVisible[position] ? View.VISIBLE : View.GONE);
 
+        // Button show the text wenn it is clicked
         mButtonMore.setOnClickListener(v -> {
-            isBodyVisible[position] = !isBodyVisible[position];
+            mIsBodyVisible[position] = !mIsBodyVisible[position];       // show the Text
+            mButtonMore.setText(mIsBodyVisible[position] ? "Weniger" : "Mehr"); // set the Button text
             notifyDataSetChanged();
         });
 

@@ -1,7 +1,5 @@
 package de.fhdw.rroch.staticfix2.Pages;
 
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -12,12 +10,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import de.fhdw.rroch.staticfix2.Calculate;
 import de.fhdw.rroch.staticfix2.R;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ResultPage extends AppCompatActivity {
-    private final String[] tableHeader = {"ai", "h(ai)", "f(ai)", "H(ai)", "F(ai)", "HR(ai)", "FR(ai)"};
+    // initialize and treat the global objects
+    private final String[] mTableHeader = {"ai", "h(ai)", "f(ai)", "H(ai)", "F(ai)", "HR(ai)", "FR(ai)"};
     private TextView mRawData, mOrganizedData;
     private TextView mMedian, mModus, mQuantile25, mQuantile75, mArithmeticMean, mGeometricMean;
     private TextView mSpan, mMeanAbsoluteDeviation, mEmpiricalVariance, mEmpiricalStandardDeviation, mCoefficientsOfVariation, mInterquartileRange;
@@ -28,6 +28,7 @@ public class ResultPage extends AppCompatActivity {
     private double[] mLocationParameters;
     private double[] mScatteringParameters;
 
+    //create the result view
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,7 @@ public class ResultPage extends AppCompatActivity {
         }
     }
 
+    // initialize the rest objects
     private void initializeViews() {
         mRawData = findViewById(R.id.tv_result_raw_input);
         mOrganizedData = findViewById(R.id.tv_result_organized_input);
@@ -68,6 +70,7 @@ public class ResultPage extends AppCompatActivity {
         mInterquartileRange = findViewById(R.id.tv_result_interquartile_range_data);
     }
 
+    // get the data
     private void processData() {
         mOrderedInputData = mCalculate.organizedData(mItems);
         mFrequencyDistribution = mCalculate.createFrequencyData(mItems);
@@ -75,6 +78,7 @@ public class ResultPage extends AppCompatActivity {
         mScatteringParameters = mCalculate.createScatteringParameters(mOrderedInputData);
     }
 
+    //add data to the segments
     private void displayData() {
         mRawData.setText(mItems.toString());
         mOrganizedData.setText(mOrderedInputData.toString());
@@ -83,17 +87,21 @@ public class ResultPage extends AppCompatActivity {
         addDataToScatteringParameters(mScatteringParameters);
     }
 
+    // add data the the table
     private void addDataToTableFrequency(List<Double[]> data) {
         int headerCounter = 0;
 
+        // create the row
         for (Double[] row : data) {
             TableRow tableRow = new TableRow(this);
             tableRow.setLayoutParams(new TableRow.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
             ));
+
+            // add in every row the specific header
             TextView headerView = new TextView(this);
-            headerView.setText(tableHeader[headerCounter]);
+            headerView.setText(mTableHeader[headerCounter]);
             headerView.setPadding(16, 16, 16, 16);
             headerView.setGravity(Gravity.CENTER);
             headerView.setTextColor(getColor(R.color.normal_text_color));
@@ -101,6 +109,7 @@ public class ResultPage extends AppCompatActivity {
             headerCounter++;
 
             for (Double cell : row) {
+                // add the data to the row
                 TextView textView = new TextView(this);
                 textView.setText(cell.toString());
                 textView.setPadding(16, 16, 16, 16);
@@ -112,6 +121,7 @@ public class ResultPage extends AppCompatActivity {
         }
     }
 
+    // add the data to the location parameters
     private void addDataToLocationParameters(double[] input) {
         if (input != null) {
             mMedian.setText(String.valueOf(input[0]));
@@ -123,6 +133,7 @@ public class ResultPage extends AppCompatActivity {
         }
     }
 
+    // add the data to the scattering parameters
     private void addDataToScatteringParameters(double[] input) {
         if (input != null) {
             mSpan.setText(String.valueOf(input[0]));
@@ -134,7 +145,8 @@ public class ResultPage extends AppCompatActivity {
         }
     }
 
-    private void retrieveSavedData(Bundle savedInstanceState) {
+    // set the data to the variables
+    private void retrieveSavedData(@NotNull Bundle savedInstanceState) {
         mItems = (ArrayList<Integer>) savedInstanceState.getSerializable("INPUT_DATA");
         mOrderedInputData = (ArrayList<Integer>) savedInstanceState.getSerializable("ORDERED_INPUT_DATA");
         mFrequencyDistribution = (List<Double[]>) savedInstanceState.getSerializable("FREQUENCY_DISTRIBUTION");
@@ -142,8 +154,9 @@ public class ResultPage extends AppCompatActivity {
         mScatteringParameters = savedInstanceState.getDoubleArray("SCATTERING_PARAMETERS");
     }
 
+    // save the data
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NotNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable("INPUT_DATA", mItems);
         outState.putSerializable("ORDERED_INPUT_DATA", mOrderedInputData);

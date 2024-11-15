@@ -1,24 +1,20 @@
 package de.fhdw.rroch.staticfix2;
 
 import android.content.Context;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import de.fhdw.rroch.staticfix2.Pages.MainPage;
-
 import java.util.ArrayList;
-import java.util.Random;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
-import static androidx.core.content.ContextCompat.getSystemService;
-
+// the single item
 public class MainAdapter extends BaseAdapter {
 
-    private Context mContext;
-    private ArrayList<Integer> mItems;
+    // initialize the global objects
+    private final Context mContext;
+    private final ArrayList<Integer> mItems;
 
+    // constructor the object
     public MainAdapter(Context context, ArrayList<Integer> items) {
         this.mContext = context;
         this.mItems = items;
@@ -39,6 +35,7 @@ public class MainAdapter extends BaseAdapter {
         return position;
     }
 
+    // delete the clicked Item
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

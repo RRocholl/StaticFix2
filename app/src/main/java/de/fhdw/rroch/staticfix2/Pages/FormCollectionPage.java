@@ -16,14 +16,14 @@ public class FormCollectionPage extends AppCompatActivity {
 
         setContentView(R.layout.form_collection_layout);
 
-        // Header- und Body-Arrays erstellen
+        // Header- and Body-Arrays created
         String[] headers = getResources().getStringArray(R.array.attribut_name);
         String[] bodies = getResources().getStringArray(R.array.attribut_description);
 
-        // ListView finden
+        // ListView treat the objects
         listView = findViewById(R.id.lv_forms_page);
 
-        // Adapter erstellen und setzen
+        // create and set the Adapter
         FormsAdapter adapter = new FormsAdapter(this, headers, bodies);
         listView.setAdapter(adapter);
     }
