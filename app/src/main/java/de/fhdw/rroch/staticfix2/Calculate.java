@@ -5,6 +5,7 @@ import java.util.*;
 public class Calculate {
     private final static double roundDigit = 1000.0;
 
+    // Organize input data and return sorted list
     public ArrayList<Integer> organizedData(ArrayList<Integer> input) {
         ArrayList<Integer> result = new ArrayList<>();
         if (!input.isEmpty()) {
@@ -16,10 +17,11 @@ public class Calculate {
         return result;
     }
 
+    // Create frequency data: absolute, relative, cumulative, and residual frequencies
     public List<Double[]> createFrequencyData(ArrayList<Integer> input) {
         List<Double[]> result = new ArrayList<>();
         if (!input.isEmpty()) {
-            ArrayList<Integer> tableHeaderData = tabelHeader(input);
+            ArrayList<Integer> tableHeaderData = tableHeader(input);
             int rowSize = tableHeaderData.size();
             int inputSize = input.size();
             ArrayList<Integer> tableAbsoluteFrequenciesData = absoluteFrequencies(input);
@@ -29,11 +31,12 @@ public class Calculate {
             ArrayList<Integer> absoluteResidualFrequenciesData = absoluteResidualFrequencies(tableAbsoluteFrequenciesData);
             ArrayList<Double> relativeResidualFrequenciesData = relativeResidualFrequencies(tableRelativeFrequenciesData);
 
-
+            // Initialize the result array with 7 rows
             for (int i = 0; i < 7; i++) {
                 result.add(new Double[rowSize]);
             }
 
+            // Populate the result with the frequency data
             for (int i = 0; i < rowSize; i++) {
                 result.get(0)[i] = (double) tableHeaderData.get(i);
                 result.get(1)[i] = (double) tableAbsoluteFrequenciesData.get(i);
@@ -48,7 +51,8 @@ public class Calculate {
         return result;
     }
 
-    private ArrayList<Integer> tabelHeader(ArrayList<Integer> input) {
+    // Create header for frequency table (unique values from the input)
+    private ArrayList<Integer> tableHeader(ArrayList<Integer> input) {
         ArrayList<Integer> result = new ArrayList<>(input);
         result.sort(Integer::compareTo);
         for (int i = 0; i < result.size() - 1; i++) {
@@ -60,11 +64,12 @@ public class Calculate {
         return result;
     }
 
+    // Calculate the absolute frequencies of the input data
     private ArrayList<Integer> absoluteFrequencies(ArrayList<Integer> input) {
         ArrayList<Integer> result = new ArrayList<>();
         if (!input.isEmpty()) {
-            ArrayList<Integer> coutObject = tabelHeader(input);
-            for (Integer integer : coutObject) {
+            ArrayList<Integer> countObject = tableHeader(input);
+            for (Integer integer : countObject) {
                 int counter = 0;
                 for (Integer value : input) {
                     if (integer.equals(value)) {
@@ -79,6 +84,7 @@ public class Calculate {
         return result;
     }
 
+    // Calculate relative frequencies for the given data
     private ArrayList<Double> relativeFrequencies(List<Integer> input, int n) {
         ArrayList<Double> result = new ArrayList<>();
         if (!input.isEmpty()) {
@@ -87,13 +93,14 @@ public class Calculate {
                 helper = Math.round(helper * roundDigit) / roundDigit;
                 result.add(helper);
             }
-        }else {
+        } else {
             result.add(-1.0);
         }
 
         return result;
     }
 
+    // Calculate the absolute cumulative frequencies
     private ArrayList<Integer> absoluteCumulativeFrequencies(ArrayList<Integer> input) {
         ArrayList<Integer> result = new ArrayList<>();
 
@@ -109,6 +116,7 @@ public class Calculate {
         return result;
     }
 
+    // Calculate the relative cumulative frequencies
     private ArrayList<Double> relativeCumulativeFrequencies(ArrayList<Double> input) {
         ArrayList<Double> result = new ArrayList<>();
 
@@ -125,16 +133,17 @@ public class Calculate {
         return result;
     }
 
+    // Calculate the absolute residual frequencies
     private ArrayList<Integer> absoluteResidualFrequencies(ArrayList<Integer> input) {
         ArrayList<Integer> result = new ArrayList<>();
 
         if (!input.isEmpty()) {
             int sum = 0;
-            int counter = input.size() -1;
+            int counter = input.size() - 1;
             result.add(sum);
             for (int i = counter; i >= 1; i--) {
                 sum += input.get(i);
-                result.add(0,sum);
+                result.add(0, sum);
             }
         } else {
             result.add(-1);
@@ -142,17 +151,18 @@ public class Calculate {
         return result;
     }
 
+    // Calculate the relative residual frequencies
     private ArrayList<Double> relativeResidualFrequencies(ArrayList<Double> input) {
         ArrayList<Double> result = new ArrayList<>();
 
         if (!input.isEmpty()) {
             double sum = 0.0;
-            int counter = input.size() -1;
+            int counter = input.size() - 1;
             result.add(sum);
             for (int i = counter; i >= 1; i--) {
                 sum += input.get(i);
                 sum = Math.round(sum * roundDigit) / roundDigit;
-                result.add(0,sum);
+                result.add(0, sum);
             }
         } else {
             result.add(-1.0);
@@ -160,11 +170,10 @@ public class Calculate {
         return result;
     }
 
-    //Location Parameters
+    // Location Parameters
     public double[] createLocationParameters(ArrayList<Integer> input) {
         double[] result = new double[6];
         if (!input.isEmpty()) {
-            //the results added rounded in the array
             result[0] = Math.round(modus(input) * roundDigit) / roundDigit;
             result[1] = Math.round(median(input) * roundDigit) / roundDigit;
             result[2] = Math.round(quantile(input, 0.25) * roundDigit) / roundDigit;
@@ -172,13 +181,13 @@ public class Calculate {
             result[4] = Math.round(arithmeticMean(input) * roundDigit) / roundDigit;
             result[5] = Math.round(geometricMean(input) * roundDigit) / roundDigit;
 
-        }else{
+        } else {
             Arrays.fill(result, -1.0);
         }
         return result;
     }
 
-    // Calculate: Location Parameters
+    // Calculate the mode (most frequent value)
     private double modus(ArrayList<Integer> input) {
         if (input.isEmpty()) {
             return -1;
@@ -190,7 +199,7 @@ public class Calculate {
             frequencyMap.put(number, frequencyMap.getOrDefault(number, 0) + 1);
         }
 
-        // Find the mode: the element with the highest frequency
+        // Find the mode (element with the highest frequency)
         int maxFrequency = 0;
         double mode = -1;
 
@@ -209,6 +218,7 @@ public class Calculate {
         return mode;
     }
 
+    // Calculate the median (middle value)
     private double median(ArrayList<Integer> input) {
         if (input.isEmpty()) {
             return -1.0;
@@ -225,6 +235,7 @@ public class Calculate {
         }
     }
 
+    // Calculate the quantile value for a given percentile
     private double quantile(ArrayList<Integer> input, double percentile) {
         if (input.isEmpty()) {
             return -1;
@@ -244,6 +255,7 @@ public class Calculate {
         return input.get(index);
     }
 
+    // Calculate the arithmetic mean
     private double arithmeticMean(ArrayList<Integer> input) {
         if (input.isEmpty()) {
             return -1;
@@ -255,23 +267,24 @@ public class Calculate {
         return sum / input.size();
     }
 
+    // Calculate the geometric mean
     private double geometricMean(ArrayList<Integer> input) {
         if (input.isEmpty()) {
             return -1;
         }
 
-        double potens = 1.0;
+        double potent = 1.0;
 
         for (Integer integer : input) {
-            potens *= integer;
+            potent *= integer;
         }
 
         int size = input.size();
 
-        return Math.pow(potens, 1.0 / size);
+        return Math.pow(potent, 1.0 / size);
     }
 
-    //Scattering Parameters
+    // Scattering Parameters
     public double[] createScatteringParameters(ArrayList<Integer> input) {
         double[] result = new double[6];
         if (!input.isEmpty()) {
@@ -282,26 +295,27 @@ public class Calculate {
             result[4] = Math.round(coefficientsOfVariation(input) * roundDigit) / roundDigit;
             result[5] = Math.round(interquartileRange(input) * roundDigit) / roundDigit;
 
-        }else{
+        } else {
             Arrays.fill(result, -1.0);
         }
         return result;
     }
 
-    // Calculate: Scattering Parameters
+    // Calculate the span (difference between max and min value)
     private double span(ArrayList<Integer> input) {
         if (input.isEmpty()) {
             return -1;
         }
 
-        ArrayList<Integer> orgenised = new ArrayList<>(input);
-        orgenised.sort(Integer::compareTo);
-        double minValue = orgenised.get(0);
-        double maxValue = orgenised.get(orgenised.size() - 1);
+        ArrayList<Integer> organised = new ArrayList<>(input);
+        organised.sort(Integer::compareTo);
+        double minValue = organised.get(0);
+        double maxValue = organised.get(organised.size() - 1);
 
         return maxValue - minValue;
     }
 
+    // Calculate the mean absolute deviation
     private double meanAbsoluteDeviation(ArrayList<Integer> input) {
         if (input.isEmpty()) {
             return -1;
@@ -314,6 +328,7 @@ public class Calculate {
         return deviation / input.size();
     }
 
+    // Calculate the empirical variance
     private double empiricalVariance(ArrayList<Integer> input) {
         if (input.isEmpty()) {
             return -1;
@@ -327,6 +342,7 @@ public class Calculate {
         return variance / input.size();
     }
 
+    // Calculate the empirical standard deviation
     private double empiricalStandardDeviation(ArrayList<Integer> input) {
         if (input.isEmpty()) {
             return -1;
@@ -335,6 +351,7 @@ public class Calculate {
         return Math.sqrt(empiricalVariance(input));
     }
 
+    // Calculate the coefficient of variation
     private double coefficientsOfVariation(ArrayList<Integer> input) {
         if (input.isEmpty()) {
             return -1;
@@ -343,11 +360,12 @@ public class Calculate {
         return empiricalStandardDeviation(input) / arithmeticMean(input);
     }
 
+    // Calculate the interquartile range
     private double interquartileRange(ArrayList<Integer> input) {
         if (input.isEmpty()) {
             return -1;
         }
 
-        return quantile(input, 0.75) - quantile(input,0.25);
+        return quantile(input, 0.75) - quantile(input, 0.25);
     }
 }
