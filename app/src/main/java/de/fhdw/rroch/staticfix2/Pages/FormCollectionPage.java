@@ -8,8 +8,6 @@ import de.fhdw.rroch.staticfix2.R;
 
 public class FormCollectionPage extends AppCompatActivity {
 
-    private ListView listView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +19,7 @@ public class FormCollectionPage extends AppCompatActivity {
         String[] bodies = getResources().getStringArray(R.array.attribut_description);
 
         // ListView treat the objects
-        listView = findViewById(R.id.lv_forms_page);
+        ListView listView = findViewById(R.id.lv_forms_page);
 
         // create and set the Adapter
         FormsAdapter adapter = new FormsAdapter(this, headers, bodies);
