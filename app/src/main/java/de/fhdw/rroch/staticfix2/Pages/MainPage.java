@@ -1,6 +1,8 @@
 package de.fhdw.rroch.staticfix2.Pages;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,6 +11,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import de.fhdw.rroch.staticfix2.MainAdapter;
 import de.fhdw.rroch.staticfix2.R;
 
 import java.util.ArrayList;
@@ -17,11 +20,10 @@ import java.util.Random;
 public class MainPage extends AppCompatActivity {
 
     private Button mBtnNavigateToFormsCollection, mBtnNavigateToResults, mBtnAddItem, mBtnRandomItems;
-    private Spinner mSpnInputParameters;
 
     private ListView mListView;
     private ArrayList<Integer> mItems;
-    private ArrayAdapter<Integer> mAdapter;
+    private MainAdapter mAdapter;
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -34,14 +36,11 @@ public class MainPage extends AppCompatActivity {
         mBtnNavigateToResults = findViewById(R.id.btn_result_page);
         mBtnAddItem = findViewById(R.id.btn_add_item);
         mBtnRandomItems = findViewById(R.id.btn_random_items);
-        mSpnInputParameters = findViewById(R.id.spn_input_parameters);
 
         mListView = findViewById(R.id.lv_main_page);
         mItems = new ArrayList<>();
-        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mItems);
+        mAdapter = new MainAdapter(this, mItems);
         mListView.setAdapter(mAdapter);
-
-        mSpnInputParameters.setAdapter(mAdapter);
 
         updateButtonState();
 
@@ -56,7 +55,6 @@ public class MainPage extends AppCompatActivity {
                 android.R.layout.simple_spinner_item
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpnInputParameters.setAdapter(adapter);
     }
 
     private void navigateToFormsCollection() {
@@ -71,8 +69,9 @@ public class MainPage extends AppCompatActivity {
     }
 
     private void updateButtonState() {
-        mBtnNavigateToResults.setEnabled(!mItems.isEmpty());
-        // mBtnNavigateToResults.setBackground((!mItems.isEmpty())?10011097:getColor(R.color.light_blue));
+        boolean isEmpty = !mItems.isEmpty();
+        mBtnNavigateToResults.setEnabled(isEmpty);
+        mBtnNavigateToResults.setBackgroundColor(isEmpty ? getColor(R.color.light_black) : getColor(R.color.default_btn_color));
     }
 
     private void makeSimpleStaticPopUpWindow() {
@@ -82,7 +81,7 @@ public class MainPage extends AppCompatActivity {
 
         PopupWindow popupWindow = new PopupWindow(
                 popupView,
-                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 true
         );
@@ -112,7 +111,7 @@ public class MainPage extends AppCompatActivity {
                                                       // Enable "Add" button only if EditText is not empty
                                                       boolean mEditTextIsNotEmpty =!s.toString().trim().isEmpty();
                                                       buttonAdd.setEnabled(mEditTextIsNotEmpty);
-                                                      buttonAdd.setBackgroundColor(mEditTextIsNotEmpty ? getColor(R.color.light_black) : getColor(R.color.organge));
+                                                      buttonAdd.setBackgroundColor(mEditTextIsNotEmpty ? getColor(R.color.light_black) : getColor(R.color.default_btn_color));
                                                   }
 
                                                   @Override
@@ -148,7 +147,7 @@ public class MainPage extends AppCompatActivity {
 
         PopupWindow popupWindow = new PopupWindow(
                 popupView,
-                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 true
         );

@@ -13,6 +13,7 @@ public class FormCollectionPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.form_collection_layout);
 
         // Header- und Body-Arrays erstellen

@@ -1,5 +1,7 @@
 package de.fhdw.rroch.staticfix2.Pages;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -76,26 +78,13 @@ public class ResultPage extends AppCompatActivity {
     private void displayData() {
         mRawData.setText(mItems.toString());
         mOrganizedData.setText(mOrderedInputData.toString());
-        addTableHeader();
         addDataToTableFrequency(mFrequencyDistribution);
         addDataToLocationParameters(mLocationParameters);
         addDataToScatteringParameters(mScatteringParameters);
     }
 
-    private void addTableHeader() {
-        TableRow headerRow = new TableRow(this);
-
-        for (String header : tableHeader) {
-            TextView headerTextView = new TextView(this);
-            headerTextView.setText(header);
-            headerTextView.setPadding(16, 16, 16, 16);
-            headerTextView.setGravity(Gravity.CENTER);
-            headerRow.addView(headerTextView);
-        }
-        tableLayout.addView(headerRow);
-    }
-
     private void addDataToTableFrequency(List<Double[]> data) {
+        int headerCounter = 0;
 
         for (Double[] row : data) {
             TableRow tableRow = new TableRow(this);
@@ -103,12 +92,20 @@ public class ResultPage extends AppCompatActivity {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
             ));
+            TextView headerView = new TextView(this);
+            headerView.setText(tableHeader[headerCounter]);
+            headerView.setPadding(16, 16, 16, 16);
+            headerView.setGravity(Gravity.CENTER);
+            headerView.setTextColor(getColor(R.color.normal_text_color));
+            tableRow.addView(headerView);
+            headerCounter++;
 
             for (Double cell : row) {
                 TextView textView = new TextView(this);
                 textView.setText(cell.toString());
                 textView.setPadding(16, 16, 16, 16);
                 textView.setGravity(Gravity.CENTER);
+                textView.setTextColor(getColor(R.color.normal_text_color));
                 tableRow.addView(textView);
             }
             tableLayout.addView(tableRow);

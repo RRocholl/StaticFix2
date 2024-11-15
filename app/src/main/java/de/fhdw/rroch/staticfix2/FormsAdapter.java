@@ -52,12 +52,9 @@ public class FormsAdapter extends BaseAdapter {
 
         mBodyText.setVisibility(isBodyVisible[position] ? View.VISIBLE : View.GONE);
 
-        mButtonMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isBodyVisible[position] = !isBodyVisible[position];
-                notifyDataSetChanged();
-            }
+        mButtonMore.setOnClickListener(v -> {
+            isBodyVisible[position] = !isBodyVisible[position];
+            notifyDataSetChanged();
         });
 
         return convertView;

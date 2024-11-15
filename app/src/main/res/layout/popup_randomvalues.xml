@@ -3,86 +3,93 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:background="@color/light_blue"
-              android:padding="16dp"
+              android:background="@color/light_black"
+              android:padding="4dp"
               android:layout_gravity="center"
               android:orientation="vertical"
 >
 
-    <EditText
-            android:id="@+id/etn_count_random"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Anzahl"
-            android:text="23"
-            android:minHeight="48dp"
-            android:digits="0123456789"
-            android:layout_gravity="center"
-    />
-
-
     <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
+            android:layout_height="match_parent"
+            android:padding="12dp"
+            android:background="@color/white"
     >
         <EditText
-                android:id="@+id/etn_min_random"
+                android:id="@+id/etn_count_random"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:hint="Min"
-                android:text="1"
+                android:hint="Anzahl"
+                android:text="23"
                 android:minHeight="48dp"
                 android:digits="0123456789"
                 android:layout_gravity="center"
-                android:layout_weight="1"
         />
-
-        <TextView
-                android:text=" - "
-                android:layout_width="wrap_content"
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView"
+
+        >
+            <EditText
+                    android:id="@+id/etn_min_random"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:hint="Min"
+                    android:text="1"
+                    android:minHeight="48dp"
+                    android:digits="0123456789"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+            />
+
+            <TextView
+                    android:text=" - "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+            />
+
+            <EditText
+                    android:id="@+id/et_max_random"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:hint="Max"
+                    android:text="1000"
+                    android:minHeight="48dp"
+                    android:digits="0123456789"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+            />
+
+        </LinearLayout>
+        <Button
+                android:id="@+id/btn_genrate_radnom"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="generate"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-        />
 
-        <EditText
-                android:id="@+id/et_max_random"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:hint="Max"
-                android:text="1000"
-                android:minHeight="48dp"
-                android:digits="0123456789"
-                android:layout_gravity="center"
-                android:layout_weight="1"
+                android:paddingHorizontal="@dimen/btn_padding_horizontal"
+                android:paddingVertical="@dimen/btn_padding_vertical"
+                android:backgroundTint="@color/default_btn_color"
+                android:textColor="@color/white"
+                android:textSize="@dimen/btn_text_size"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="@dimen/btn_layout_margin_horizontal"
+                android:layout_marginVertical="@dimen/btn_layout_margin_vertical"
+                app:cornerRadius="@dimen/corner_radius"
+                style="?android:attr/buttonBarButtonStyle"
         />
-
     </LinearLayout>
-    <Button
-            android:id="@+id/btn_genrate_radnom"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:text="generate"
-            android:layout_weight="1"
-            android:layout_gravity="center"
 
-            android:paddingHorizontal="@dimen/btn_padding_horizontal"
-            android:paddingVertical="@dimen/btn_padding_vertical"
-            android:backgroundTint="@color/light_black"
-            android:textColor="@color/white"
-            android:textSize="@dimen/btn_text_size"
-            android:fontFamily="sans-serif"
-            android:textStyle="bold"
-            android:layout_marginHorizontal="@dimen/btn_layout_margin_horizontal"
-            android:layout_marginVertical="@dimen/btn_layout_margin_vertical"
-            app:cornerRadius="@dimen/corner_radius"
-            style="?android:attr/buttonBarButtonStyle"
-    />
 
 </LinearLayout>

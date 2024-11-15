@@ -4,8 +4,6 @@ import java.util.*;
 
 public class Calculate {
     private final static double roundDigit = 1000.0;
-    //Math.round(sum * roundDigit) / roundDigit
-
 
     public ArrayList<Integer> organizedData(ArrayList<Integer> input) {
         ArrayList<Integer> result = new ArrayList<>();
@@ -49,7 +47,8 @@ public class Calculate {
 
         return result;
     }
-    public ArrayList<Integer> tabelHeader(ArrayList<Integer> input) {
+
+    private ArrayList<Integer> tabelHeader(ArrayList<Integer> input) {
         ArrayList<Integer> result = new ArrayList<>(input);
         result.sort(Integer::compareTo);
         for (int i = 0; i < result.size() - 1; i++) {
@@ -61,7 +60,7 @@ public class Calculate {
         return result;
     }
 
-    public ArrayList<Integer> absoluteFrequencies(ArrayList<Integer> input) {
+    private ArrayList<Integer> absoluteFrequencies(ArrayList<Integer> input) {
         ArrayList<Integer> result = new ArrayList<>();
         if (!input.isEmpty()) {
             ArrayList<Integer> coutObject = tabelHeader(input);
@@ -83,8 +82,8 @@ public class Calculate {
     private ArrayList<Double> relativeFrequencies(List<Integer> input, int n) {
         ArrayList<Double> result = new ArrayList<>();
         if (!input.isEmpty()) {
-            for (int i = 0; i < input.size(); i++) {
-                double helper = (double) input.get(i) / (double) n;
+            for (Integer integer : input) {
+                double helper = (double) integer / (double) n;
                 helper = Math.round(helper * roundDigit) / roundDigit;
                 result.add(helper);
             }
@@ -95,7 +94,7 @@ public class Calculate {
         return result;
     }
 
-    public ArrayList<Integer> absoluteCumulativeFrequencies(ArrayList<Integer> input) {
+    private ArrayList<Integer> absoluteCumulativeFrequencies(ArrayList<Integer> input) {
         ArrayList<Integer> result = new ArrayList<>();
 
         if (!input.isEmpty()) {
@@ -110,7 +109,7 @@ public class Calculate {
         return result;
     }
 
-    public ArrayList<Double> relativeCumulativeFrequencies(ArrayList<Double> input) {
+    private ArrayList<Double> relativeCumulativeFrequencies(ArrayList<Double> input) {
         ArrayList<Double> result = new ArrayList<>();
 
         if (!input.isEmpty()) {
@@ -126,7 +125,7 @@ public class Calculate {
         return result;
     }
 
-    public ArrayList<Integer> absoluteResidualFrequencies(ArrayList<Integer> input) {
+    private ArrayList<Integer> absoluteResidualFrequencies(ArrayList<Integer> input) {
         ArrayList<Integer> result = new ArrayList<>();
 
         if (!input.isEmpty()) {
@@ -143,7 +142,7 @@ public class Calculate {
         return result;
     }
 
-    public ArrayList<Double> relativeResidualFrequencies(ArrayList<Double> input) {
+    private ArrayList<Double> relativeResidualFrequencies(ArrayList<Double> input) {
         ArrayList<Double> result = new ArrayList<>();
 
         if (!input.isEmpty()) {
@@ -161,7 +160,7 @@ public class Calculate {
         return result;
     }
 
-    //Lageparameter
+    //Location Parameters
     public double[] createLocationParameters(ArrayList<Integer> input) {
         double[] result = new double[6];
         if (!input.isEmpty()) {
@@ -179,10 +178,8 @@ public class Calculate {
         return result;
     }
 
-
     // Calculate: Location Parameters
-
-    public double modus(ArrayList<Integer> input) {
+    private double modus(ArrayList<Integer> input) {
         if (input.isEmpty()) {
             return -1;
         }
@@ -274,8 +271,7 @@ public class Calculate {
         return Math.pow(potens, 1.0 / size);
     }
 
-
-    //Streungsparameter
+    //Scattering Parameters
     public double[] createScatteringParameters(ArrayList<Integer> input) {
         double[] result = new double[6];
         if (!input.isEmpty()) {
@@ -293,14 +289,12 @@ public class Calculate {
     }
 
     // Calculate: Scattering Parameters
-
     private double span(ArrayList<Integer> input) {
         if (input.isEmpty()) {
             return -1;
         }
 
-        ArrayList<Integer> orgenised = new ArrayList<>();
-        orgenised.addAll(input);
+        ArrayList<Integer> orgenised = new ArrayList<>(input);
         orgenised.sort(Integer::compareTo);
         double minValue = orgenised.get(0);
         double maxValue = orgenised.get(orgenised.size() - 1);
@@ -357,4 +351,3 @@ public class Calculate {
         return quantile(input, 0.75) - quantile(input,0.25);
     }
 }
-
