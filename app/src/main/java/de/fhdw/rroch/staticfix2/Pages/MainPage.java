@@ -18,7 +18,7 @@ import java.util.Random;
 
 public class MainPage extends AppCompatActivity {
 
-    private Button mBtnNavigateToFormsCollection, mBtnNavigateToResults, mBtnAddItem, mBtnRandomItems;
+    private Button mBtnNavigateToResults;
 
     private ListView mListView;
     private ArrayList<Integer> mItems;
@@ -31,10 +31,10 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.main_layout);
 
 
-        mBtnNavigateToFormsCollection = findViewById(R.id.btn_form_page);
+        Button mBtnNavigateToFormsCollection = findViewById(R.id.btn_form_page);
         mBtnNavigateToResults = findViewById(R.id.btn_result_page);
-        mBtnAddItem = findViewById(R.id.btn_add_item);
-        mBtnRandomItems = findViewById(R.id.btn_random_items);
+        Button mBtnAddItem = findViewById(R.id.btn_add_item);
+        Button mBtnRandomItems = findViewById(R.id.btn_random_items);
 
         mListView = findViewById(R.id.lv_main_page);
         mItems = new ArrayList<>();
@@ -124,7 +124,6 @@ public class MainPage extends AppCompatActivity {
 
                                                   @Override
                                                   public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                                      // Enable "Add" button only if EditText is not empty
                                                       boolean mEditTextIsNotEmpty =!s.toString().trim().isEmpty();
                                                       buttonAdd.setEnabled(mEditTextIsNotEmpty);
                                                       buttonAdd.setBackgroundColor(mEditTextIsNotEmpty ? getColor(R.color.light_black) : getColor(R.color.default_btn_color));
