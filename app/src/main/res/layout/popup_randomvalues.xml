@@ -21,12 +21,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:hint="Anzahl"
-                android:text="23"
+                android:hint="@string/etn_count_random_name"
                 android:minHeight="48dp"
                 android:digits="0123456789"
                 android:layout_gravity="center"
-        />
+                android:importantForAutofill="no"/>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -38,19 +37,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:hint="Min"
-                    android:text="1"
+                    android:hint="@string/etn_min_random_name"
                     android:minHeight="48dp"
                     android:digits="0123456789"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-            />
+                    android:importantForAutofill="no"/>
 
             <TextView
-                    android:text=" - "
+                    android:text="@string/tv_random_space"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView"
                     android:layout_weight="1"
                     android:layout_gravity="center"
             />
@@ -60,12 +57,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:hint="Max"
-                    android:text="1000"
+                    android:hint="@string/et_max_random_name"
                     android:minHeight="48dp"
                     android:digits="0123456789"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:importantForAutofill="no"
             />
 
         </LinearLayout>
@@ -73,13 +70,13 @@
                 android:id="@+id/btn_genrate_radnom"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:text="generate"
+                android:text="@string/btn_genrate_radnom_name"
                 android:layout_weight="1"
                 android:layout_gravity="center"
 
                 android:paddingHorizontal="@dimen/btn_padding_horizontal"
                 android:paddingVertical="@dimen/btn_padding_vertical"
-                android:backgroundTint="@color/default_btn_color"
+                android:backgroundTint="@color/light_black"
                 android:textColor="@color/white"
                 android:textSize="@dimen/btn_text_size"
                 android:fontFamily="sans-serif"

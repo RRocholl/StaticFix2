@@ -1,25 +1,41 @@
 <resources>
     <!-- Mainpage -->
     <string name="app_name">StaticFix2</string>
-    <string name="btn_calulate_name">Calculate</string>
-    <string name="btn_add_name">Add</string>
-    <string name="btn_forms_name">Forms</string>
-    <string name="btn_generate_name">Generate</string>
-
-    <string-array name="input_spinner_array">
-        <item>einfache Häufigkeitsverteilung</item>
-        <item>klassierte Häufigkeitsverteilung</item>
-        <item>zeitliche Häufigkeitsverteilung</item>
-    </string-array>
-
-    <!-- Mainpage pop up window simple static -->
+    <string name="btn_calulate_name">Berrechnen</string>
+    <string name="btn_add_name">Hinzufügen</string>
+    <string name="btn_forms_name">Formeln</string>
+    <string name="btn_generate_name">zufällig</string>
     <string name="etn_simple_static_name">Gib eine Zahl ein</string>
     <string name="cb_simple_static_name">Weitere Werte einfügen</string>
     <string name="btn_add_simple_static_name">Hinzufügen</string>
+    <string name="btn_forms_list_item_name">Mehr</string>
+    <string name="btn_main_list_item_name">Löschen</string>
+    <string name="etn_count_random_name">Anzahl</string>
+    <string name="etn_min_random_name">Min</string>
+    <string name="tv_random_space">" - "</string>
+    <string name="et_max_random_name">Max</string>
+    <string name="btn_genrate_radnom_name">zufällig</string>
+
+    <!-- Resultpage -->
+    <string name="result_input">Eingabe:</string>
+    <string name="result_orgenist_input">Organisiert:</string>
+    <string name="result_frequency_distributions">Häufigkeitsverteilungen</string>
+    <string name="result_location_parameters">Lageparameter</string>
+    <string name="result_modus">Modus</string>
+    <string name="result_median">Median</string>
+    <string name="result_quatil_25">Quatil 25</string>
+    <string name="result_quatil_75">Quatil 75</string>
+    <string name="result_aritnetic_means">Aritnetisches Mittel</string>
+    <string name="result_geometric_mean">Geometrisches Mittel</string>
+    <string name="result_scatter_parameters">Streungsparameter</string>
+    <string name="result_span">Spanweite</string>
+    <string name="result_mean_absolute_deviation">Mittlere Absolute Abweichung</string>
+    <string name="result_empirical_variance">(empirische) Varianz</string>
+    <string name="result_empirical_standard_deviation">(empirische) Standartabweichung</string>
+    <string name="result_coefficients_of_variation">Variantionskoeffizienten</string>
+    <string name="result_interquartile_range">Quatilsabstand</string>
 
     <!-- Formspage -->
-    <string name="btn_forms_list_item_name">More</string>
-
     <string-array name="attribut_name">
         <item>Merkmalsträger, statistische Einheit</item>
         <item>Merkmal, (statistische) Variable</item>

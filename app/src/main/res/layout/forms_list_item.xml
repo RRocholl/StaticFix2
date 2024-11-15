@@ -5,7 +5,7 @@
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="@dimen/layout_middle_padding">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -19,7 +19,7 @@
                 android:layout_weight="1"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="@dimen/btn_text_size" />
 
         <Button
                 android:id="@+id/moreButton"
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/normal_text_color"
-            android:textSize="14sp"
-            android:paddingTop="4dp"
+            android:textSize="@dimen/tv_normal_text_size"
+            android:padding="@dimen/btn_layout_margin_horizontal"
             android:visibility="gone" />
 </LinearLayout>

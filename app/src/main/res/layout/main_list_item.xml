@@ -7,7 +7,6 @@
 
     <TextView
             android:id="@+id/tv_main_items"
-            android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -16,7 +15,7 @@
     />
     <Button
             android:id="@+id/btn_main_list_item"
-            android:text="edit"
+            android:text="@string/btn_main_list_item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
+              xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/light_blue"
 >
 
     <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:ignore="UselessParent">
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical"
@@ -32,12 +33,12 @@
                             android:id="@+id/tv_result_raw_input_hard"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Eingabe: "
+                            android:text="@string/result_input"
                             android:gravity="center"
                             android:layout_gravity="center_horizontal"
                             android:textStyle="bold"
                             android:textColor="@android:color/black"
-                            android:textSize="16sp"
+                            android:textSize="@dimen/tv_normal_text_size"
                             android:layout_margin="5dp"
                     />
 
@@ -45,7 +46,6 @@
                             android:id="@+id/tv_result_raw_input"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="raw data"
                             android:gravity="center"
                             android:layout_gravity="center_horizontal"
                             android:layout_margin="5dp"
@@ -57,12 +57,12 @@
                             android:id="@+id/tv_result_organized_input_hard"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Organisiert: "
+                            android:text="@string/result_orgenist_input"
                             android:gravity="center"
                             android:layout_gravity="center_horizontal"
                             android:textStyle="bold"
                             android:textColor="@android:color/black"
-                            android:textSize="16sp"
+                            android:textSize="@dimen/tv_normal_text_size"
                             android:layout_margin="5dp"
 
                     />
@@ -71,11 +71,11 @@
                             android:id="@+id/tv_result_organized_input"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="organized data"
                             android:gravity="center"
                             android:layout_gravity="center_horizontal"
                             android:layout_margin="5dp"
                             android:textColor="@color/normal_text_color"
+                            android:textSize="@dimen/tv_normal_text_size"
                     />
 
                 </LinearLayout>
@@ -99,12 +99,12 @@
                             android:id="@+id/tv3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Häufigkeitsverteilungen"
+                            android:text="@string/result_frequency_distributions"
                             android:gravity="center"
                             android:layout_gravity="center_horizontal"
                             android:textStyle="bold"
                             android:textColor="@android:color/black"
-                            android:textSize="16sp"
+                            android:textSize="@dimen/tv_normal_text_size"
                             android:layout_margin="5dp"
                     />
 
@@ -139,12 +139,12 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Lageparameter"
+                            android:text="@string/result_location_parameters"
                             android:gravity="center"
                             android:layout_gravity="center_horizontal"
                             android:textStyle="bold"
                             android:textColor="@android:color/black"
-                            android:textSize="16sp"
+                            android:textSize="@dimen/tv_normal_text_size"
                             android:layout_margin="5dp"
                     />
 
@@ -161,7 +161,7 @@
                         >
 
                             <TextView
-                                    android:text="Modus"
+                                    android:text="@string/result_modus"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
@@ -169,7 +169,6 @@
 
                             <TextView
                                     android:id="@+id/tv_result_modus_data"
-                                    android:text="TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
@@ -185,7 +184,7 @@
                         >
 
                             <TextView
-                                    android:text="Median"
+                                    android:text="@string/result_median"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
@@ -193,7 +192,6 @@
 
                             <TextView
                                     android:id="@+id/tv_result_median_data"
-                                    android:text="TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
@@ -209,7 +207,7 @@
                         >
 
                             <TextView
-                                    android:text="Quatil 25"
+                                    android:text="@string/result_quatil_25"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
@@ -217,7 +215,6 @@
 
                             <TextView
                                     android:id="@+id/tv_result_quantile_25_data"
-                                    android:text="TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
@@ -233,18 +230,19 @@
                         >
 
                             <TextView
-                                    android:text="Quatil 75"
+                                    android:text="@string/result_quatil_75"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                             <TextView
                                     android:id="@+id/tv_result_quantile_75_data"
-                                    android:text="TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                         </TableRow>
@@ -256,18 +254,19 @@
                                 android:gravity="center"
                         >
                             <TextView
-                                    android:text="Aritnetisches Mittel"
+                                    android:text="@string/result_aritnetic_means"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                             <TextView
                                     android:id="@+id/tv_result_arithmetic_mean_data"
-                                    android:text="TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                         </TableRow>
@@ -279,18 +278,19 @@
                                 android:gravity="center"
                         >
                             <TextView
-                                    android:text="Geometrisches Mittel "
+                                    android:text="@string/result_geometric_mean"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                             <TextView
                                     android:id="@+id/tv_result_geometric_mean_data"
-                                    android:text="TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                         </TableRow>
@@ -315,12 +315,12 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Streungsparameter"
+                            android:text="@string/result_scatter_parameters"
                             android:gravity="center"
                             android:layout_gravity="center_horizontal"
                             android:textStyle="bold"
                             android:textColor="@android:color/black"
-                            android:textSize="16sp"
+                            android:textSize="@dimen/tv_normal_text_size"
                             android:layout_margin="5dp"
                     />
 
@@ -336,18 +336,19 @@
                                 android:gravity="center"
                         >
                             <TextView
-                                    android:text="Spanweite"
+                                    android:text="@string/result_span"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                             <TextView
                                     android:id="@+id/tv_result_span_data"
-                                    android:text="TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                         </TableRow>
@@ -359,18 +360,19 @@
                                 android:gravity="center"
                         >
                             <TextView
-                                    android:text="Mittlere Absolute Abweichung"
+                                    android:text="@string/result_mean_absolute_deviation"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                             <TextView
                                     android:id="@+id/tv_result_mean_absolute_deviation_data"
-                                    android:text="TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                         </TableRow>
@@ -383,18 +385,19 @@
                         >
 
                             <TextView
-                                    android:text="(empirische) Varianz"
+                                    android:text="@string/result_empirical_variance"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                             <TextView
                                     android:id="@+id/tv_result_empirical_variance_data"
-                                    android:text="TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                         </TableRow>
@@ -406,18 +409,19 @@
                                 android:gravity="center"
                         >
                             <TextView
-                                    android:text="(empirische) Standartabweichung "
+                                    android:text="@string/result_empirical_standard_deviation"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                             <TextView
                                     android:id="@+id/tv_result_empirical_standard_deviation_data"
-                                    android:text="TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                         </TableRow>
@@ -430,18 +434,19 @@
                         >
 
                             <TextView
-                                    android:text="Variantionskoeffizienten"
+                                    android:text="@string/result_coefficients_of_variation"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                             <TextView
                                     android:id="@+id/tv_result_coefficients_of_variation_data"
-                                    android:text="TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                         </TableRow>
@@ -454,18 +459,19 @@
                         >
 
                             <TextView
-                                    android:text="Quatilsabstand"
+                                    android:text="@string/result_interquartile_range"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                             <TextView
                                     android:id="@+id/tv_result_interquartile_range_data"
-                                    android:text="TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/normal_text_color"
+                                    android:textSize="@dimen/tv_normal_text_size"
                             />
 
                         </TableRow>

@@ -1,8 +1,6 @@
 package de.fhdw.rroch.staticfix2.Pages;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -49,12 +47,6 @@ public class MainPage extends AppCompatActivity {
         mBtnAddItem.setOnClickListener(v -> makeSimpleStaticPopUpWindow());
         mBtnRandomItems.setOnClickListener(v -> makeGenerateRandomPopUpWindow());
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.input_spinner_array,
-                android.R.layout.simple_spinner_item
-        );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     }
 
     private void navigateToFormsCollection() {
@@ -159,10 +151,36 @@ public class MainPage extends AppCompatActivity {
 
 
         buttonGenerateRandom.setOnClickListener(v -> {
+            int inputTextCount;
+            int inputTextMin;
+            int inputTextMax;
 
-            int inputTextCount = Integer.parseInt(editTextCount.getText().toString());
-            int inputTextMin = Integer.parseInt(editTextMin.getText().toString());
-            int inputTextMax = Integer.parseInt(editTextMax.getText().toString());
+            if (editTextCount.getText().toString().trim().isEmpty()) {
+                Toast.makeText(this, "Das Feld COUNT darf nicht leer sein!", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                inputTextCount = Integer.parseInt(editTextCount.getText().toString());
+            }
+
+            if (editTextMin.getText().toString().trim().isEmpty()) {
+                Toast.makeText(this, "Das Feld MIN darf nicht leer sein!", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                inputTextMin = Integer.parseInt(editTextMin.getText().toString());
+            }
+
+            if (editTextMax.getText().toString().trim().isEmpty()) {
+                Toast.makeText(this, "Das Feld MAX darf nicht leer sein!", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                inputTextMax = Integer.parseInt(editTextMax.getText().toString());
+            }
+
+            if (inputTextMin > inputTextMax) {
+                Toast.makeText(this, "Die Min-Zahl darf nicht größer sein als die Max-Zahl!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             Random random = new Random();
 
             for (int i = 0; i < inputTextCount; i++) {
