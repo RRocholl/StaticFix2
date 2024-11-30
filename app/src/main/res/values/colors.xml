@@ -14,5 +14,7 @@
     <color name="light_blue">#e0fbfc</color>
     <color name="organge">#ee6c4d</color>
     <color name="light_black">#293241</color>
+    <color name="normal_text_color">#1A2733</color>
+    <color name="default_btn_color">#80293241</color>
 
 </resources>

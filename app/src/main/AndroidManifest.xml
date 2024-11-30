@@ -15,7 +15,7 @@
             android:theme="@style/Theme.StaticFix2">
 
         <activity
-                android:name=".MainPage"
+                android:name=".Pages.MainPage"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -23,13 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".FormCollectionPage"
-                  android:parentActivityName=".MainPage"
+        <activity android:name=".Pages.FormCollectionPage"
+                  android:parentActivityName=".Pages.MainPage"
                   android:label="Formelsammlung"
 
         />
-        <activity android:name=".ResultPage"
-                  android:parentActivityName=".MainPage"
+        <activity android:name=".Pages.ResultPage"
+                  android:parentActivityName=".Pages.MainPage"
                   android:label="Ergebnisse"
         />
     </application>
