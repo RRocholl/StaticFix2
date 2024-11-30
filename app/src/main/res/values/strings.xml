@@ -17,7 +17,7 @@
     <string name="btn_genrate_radnom_name">zufällig</string>
 
     <!-- Resultpage -->
-    <string name="result_input">Eingabe:</string>
+    <string name="result_input">Urliste:</string>
     <string name="result_orgenist_input">Organisiert:</string>
     <string name="result_frequency_distributions">Häufigkeitsverteilungen</string>
     <string name="result_location_parameters">Lageparameter</string>
@@ -41,6 +41,42 @@
         <item>Merkmal, (statistische) Variable</item>
         <item>Merkmalswert</item>
         <item>Identifikationskriterien</item>
+        <item>Grundgesamtheit, statistische Masse</item>
+        <item>Vollerhebung, Totalerhebung</item>
+        <item>Teilerhebung, Stichprobenerhebung</item>
+        <item>Stichprobe</item>
+        <item>Bestandsmasse</item>
+        <item>Ereignismasse</item>
+        <item>Häufbares Merkma</item>
+        <item>Abzählbare Menge</item>
+        <item>Überabzählbare Menge</item>
+        <item>Diskretes Merkmal</item>
+        <item>Stetiges Merkmal</item>
+        <item>Statistische Reihe</item>
+        <item>Zeitreihe</item>
+        <item>Urliste</item>
+        <item>Geordnete statistische Reihe</item>
+        <item>Ungeordnete statistische Reihe</item>
+        <item>Skalen</item>
+        <item>Arten der Häufigkeitsverteilungen</item>
+        <item>Absolute Häufigkeiten</item>
+        <item>Relative Häufigkeiten</item>
+        <item>Absolute Summenhäufigkeiten</item>
+        <item>Relative Summenhäufigkeiten</item>
+        <item>Absolute Resthäufigkeiten</item>
+        <item>Relative Resthäufigkeiten</item>
+        <item>Lageparameter</item>
+        <item>Modus</item>
+        <item>Median</item>
+        <item>Quantile</item>
+        <item>Arithmetisches Mittel</item>
+        <item>Geometrisches Mittel</item>
+        <item>Streuungsparameter</item>
+        <item>Spannweite</item>
+        <item>(Empirische) Varianz</item>
+        <item>(Empirische) Standardabweichung</item>
+        <item>Variationskoeffizient</item>
+        <item>Quartilsabstand</item>
     </string-array>
 
     <string-array name="attribut_description">
@@ -51,6 +87,95 @@
             Merkmalsträger beschreiben:\n
             – sachliche Abgrenzung (wer/was?) \n
             – zeitliche Abgrenzung (wann?) \n
-            – räumliche Abgrenzung (wo?)</item>
+            – räumliche Abgrenzung (wo?)
+        </item>
+        <item>Gesamtheit aller Merkmalsträger, die Identifikationskriterien erfüllen.</item>
+        <item>Alle Merkmalsträger der Grundgesamtheit werden bei der Erhebung berücksichtigt.</item>
+        <item>Eine echte Teilmenge der Merkmalsträger der Grundgesamtheit wird bei der Erhebung berücksichtigt.</item>
+        <item>Die Menge der im Falle einer Teilerhebung berücksichtigten Merkmalsträger</item>
+        <item>Grundgesamtheit, deren Merkmalsträger über einen Zeitraum zu dieser gehören:</item>
+        <item>Grundgesamtheit, deren Merkmalsträger Ereignisse sind, die zu einem Zeitpunkt stattfinden.</item>
+        <item>Merkmal, das zum Erhebungszeitpunkt mehrere Werte annehmen kann
+            – Beispiele für häufbare Merkmale:\n
+            • Hobby\n
+            • Charakter\n
+            • Schulfach\n
+            • gesprochene Sprache\n \n
+            – Beispiele für nicht häufbare Merkmale:\n
+            • Kühlschranktemperatur\n
+            • Haarfarbe\n
+            • Anzahl der Schuhpaare im Besitz einer Person\n
+            • Abi Notendurchschnitt\n
+        </item>
+        <item>Menge, die endlich oder gleichmächtig mit N ist</item>
+        <item>Menge, die unendlich und nicht gleichmächtig mit N ist Beispiele für überabzählbare Mengen: [3;5), R
+        </item>
+        <item>•Merkmal, dessen Merkmalswerte abzählbar sind \n
+            •Beispiele: Hobby, Gehalt, Religionszugehörigkeit
+        </item>
+        <item>Merkmal, dessen Merkmalswerte überabzählbar sind.</item>
+        <item>Folge von nacheinander aufgeschriebenen Merkmalswerten</item>
+        <item>tatistische Reihe, deren Merkmalswerte einen Bezug zu aufeinanderfolgenden
+            Zeitpunkten oder Zeitintervallen haben.
+        </item>
+        <item>Die unmittelbar nach der Erhebung vorliegende statistische Reihe.</item>
+        <item>Geordnete statistische Reihe.</item>
+        <item>Eine statistische Reihe, deren Merkmalsausprägungen nicht sortiert sind.</item>
+        <item>• Nominalskala (z.B. Geschlecht, Religion, Farbe, Werbemedium)\n
+            • Ordinalskala, Rangskala (z.B. Militärdienstgrad, Beliebtheitsgrad, Restaurantbewertung)\n
+            • Intervallskala (z.B. Celsius-Skala zur Temperaturmessung)\n
+            • Verhältnisskala, Ratioskala (z.B. Länge, Geschwindigkeit, Anzahl)
+        </item>
+        <item>• Absolute Häufigkeiten \n
+            • Relative Häufigkeiten \n
+            • Absolute Summenhäufigkeiten \n
+            • Relative Summenhäufigkeiten \n
+            • Absolute Resthäufigkeiten \n
+            • Relative Resthäufigkeiten
+        </item>
+        <item>Die wiedergabe die Anzahl der einzelnen Ereignisse. (h)</item>
+        <item>Die prozentuale wiedergabe der einzelnen Ereignisse. (f)</item>
+        <item>Die summierte wiedergabe die Anzahl der einzelnen Ereignisse.(H)</item>
+        <item>Die summierte prozentuale wiedergabe der einzelnen Ereignisse.(F)</item>
+        <item>Die relative Summenhäufigkeit gibt die kumulierte Gesamtzahl der Merkmalsausprägungen bis zu einer
+            bestimmten Merkmalsausprägung an. (HR)
+        </item>
+        <item>Die relative Summenhäufigkeit gibt die kumulierte prozentuale Zahl der Merkmalsausprägungen bis zu einer
+            bestimmten Merkmalsausprägung an. (FR)
+        </item>
+        <item>• Modus \n
+            • Median \n
+            • Quantile \n
+            • Arithmetisches Mittel \n
+            • Geometrisches Mittel
+        </item>
+        <item>Jede in einer statistischen Reihe x1,…,xn am häufigsten vorkommende Merkmalsausprägung heißt Modus
+            (häufigster Wert, dichtester Wert) und wird mit xD bezeichnet.</item>
+        <item>Sei x1 ,…, xn eine geordnete statistische Reihe eines wenigstens ordinal messbaren Merkmals.
+            Als Median ´xZ wird jeder Wert bezeichnet, für den gilt:\n
+            • Mindestens 50% der Merkmalsausprägungen sind kleiner gleich ´xZ UND \n
+            • mindestens 50% der Merkmalsausprägungen sind größer gleich ´xZ.
+        </item>
+        <item>Sei x1 ,…, xn eine geordnete statistische Reihe eines wenigstens ordinal messbaren Merkmals
+            und p∈0 , 1. Als p-Quantil ´x p wird jeder Wert bezeichnet, für den gilt:\n
+            • Mindestens ( p⋅100)% der Merkmalsausprägungen sind kleiner gleich ´x p UND \n
+            • mindestens ((1− p) ⋅100)% der Merkmalsausprägungen sind größer gleich ´x p.</item>
+        <item>Es ist das Mittel wert einer statischen Reihe. Mann summiert alle Elemente und man dividiert am Ende durch die Anzahl.</item>
+        <item>Das geometrische Mittel ist ein Mittelwert oder Durchschnittswert, der die durchschnittliche proportionale Veränderung oder die mittlere Wachstumsrate bestimmt. Essenziell ist hierbei, dass alle Zahlen positiv sind.</item>
+   <item>• Spannweite \n
+       • Mittlere absolute Abweichung \n
+       • (Empirische) Varianz \n
+       • (Empirische) Standardabweichung \n
+       • Variationskoeffizient \n
+       • Quartilsabstand</item>
+        <item>Die Spannweite beschreibt in welchem Größen maß, sich die Statistische reihe sich befindet. Die Spannweite wird mit dem Höchstwert und die Subtraktion vom Minimalwert durchgeführt.</item>
+        <item>Maß für die Größe der Abweichung von einem Mittelwert.</item>
+        <item>Vereinfacht gesagt, ist die Standardabweichung die durchschnittliche Entfernung aller gemessenen Ausprägungen eines Merkmals vom Durchschnitt.</item>
+        <item>Der Variationskoeffizient ist ein relatives Streuungsmaß. Er sollte beim Vergleich der
+            Streuungsstärken von statistischen Reihen verwendet werden, bei denen die Größen der Werte
+            sich stark unterscheiden.</item>
+        <item>Der Quartilsabstand beschreibt die Größe des Bereichs, der die zentralen 50% der Merkmalsausprägungen
+            umfasst.
+        </item>
     </string-array>
 </resources>
