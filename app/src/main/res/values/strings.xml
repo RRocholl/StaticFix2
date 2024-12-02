@@ -34,6 +34,9 @@
     <string name="result_empirical_standard_deviation">(empirische) Standartabweichung</string>
     <string name="result_coefficients_of_variation">Variantionskoeffizienten</string>
     <string name="result_interquartile_range">Quatilsabstand</string>
+    <string name="popup_add_simple_header">Einfache Zahlen</string>
+    <string name="colse_btn_text">X</string>
+    <string name="generate_btn_text">Zufällige Zahlen</string>
 
     <!-- Formspage -->
     <string-array name="attribut_name">

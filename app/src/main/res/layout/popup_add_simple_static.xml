@@ -58,7 +58,7 @@
                 android:minHeight="48dp"
                 android:digits="0123456789"
                 android:imeOptions="actionDone"
-        />
+                android:autofillHints=""/>
 
         <CheckBox
                 android:id="@+id/cb_simple_static"
