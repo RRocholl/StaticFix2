@@ -1,7 +1,7 @@
 <resources>
     <!-- Mainpage -->
     <string name="app_name">StaticFix2</string>
-    <string name="btn_calulate_name">Berrechnen</string>
+    <string name="btn_calulate_name">Berechnen</string>
     <string name="btn_add_name">Hinzufügen</string>
     <string name="btn_forms_name">Formeln</string>
     <string name="btn_generate_name">zufällig</string>

@@ -178,7 +178,7 @@ public class MainPage extends AppCompatActivity {
 
         //genrate the view for the pop-up
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.popup_randomvalues, null);
+        View popupView = inflater.inflate(R.layout.popup_random_values, null);
 
         PopupWindow popupWindow = new PopupWindow(
                 popupView,
