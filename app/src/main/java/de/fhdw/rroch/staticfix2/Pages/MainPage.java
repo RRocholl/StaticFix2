@@ -105,28 +105,29 @@ public class MainPage extends AppCompatActivity {
 
         PopupWindow popupWindow = new PopupWindow(
                 popupView,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
                 true
         );
 
         // initialize and treat the objects
-        EditText editTextNumber = popupView.findViewById(R.id.etn_simple_static);
-        CheckBox checkBox = popupView.findViewById(R.id.cb_simple_static);
-        Button buttonAdd = popupView.findViewById(R.id.btn_add_simple_static);
+        EditText etNumber = popupView.findViewById(R.id.etn_simple_static);
+        CheckBox cbMore = popupView.findViewById(R.id.cb_simple_static);
+        Button btnAddNumber = popupView.findViewById(R.id.btn_add_simple_static);
+        Button btnClose = popupView.findViewById(R.id.btn_add_simple_close);
 
-        buttonAdd.setEnabled(false);
-        checkBox.setChecked(true);
+        btnAddNumber.setEnabled(false);
+        cbMore.setChecked(true);
 
-        editTextNumber.setOnEditorActionListener((v, actionId, event) -> {
+        etNumber.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                buttonAdd.performClick();
+                btnAddNumber.performClick();
             }
             return false;
         });
 
         // if the editText is empty, the Button is not available
-        editTextNumber.addTextChangedListener(new TextWatcher() {
+        etNumber.addTextChangedListener(new TextWatcher() {
                                                   @Override
                                                   public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                                                   }
@@ -136,9 +137,9 @@ public class MainPage extends AppCompatActivity {
                                                       // make a boolean for is the text empty
                                                       boolean mEditTextIsNotEmpty =!s.toString().trim().isEmpty();
                                                       // if the editText is empty, the Button is not available
-                                                      buttonAdd.setEnabled(mEditTextIsNotEmpty);
+                                                      btnAddNumber.setEnabled(mEditTextIsNotEmpty);
                                                       // the perfect color for it
-                                                      buttonAdd.setBackgroundColor(mEditTextIsNotEmpty ? getColor(R.color.light_black) : getColor(R.color.default_btn_color));
+                                                      btnAddNumber.setBackgroundColor(mEditTextIsNotEmpty ? getColor(R.color.light_black) : getColor(R.color.default_btn_color));
                                                   }
 
                                                   @Override
@@ -148,14 +149,14 @@ public class MainPage extends AppCompatActivity {
         );
 
         //the logic behind the button "add"
-        buttonAdd.setOnClickListener(v -> {
+        btnAddNumber.setOnClickListener(v -> {
 
-            Integer inputText = Integer.parseInt(editTextNumber.getText().toString());
-            boolean isChecked = checkBox.isChecked();
+            Integer inputText = Integer.parseInt(etNumber.getText().toString());
+            boolean isChecked = cbMore.isChecked();
             mItems.add(inputText);
 
             if (isChecked) {                // the user can add more items without closing the window
-                editTextNumber.setText("");
+                etNumber.setText("");
                 updateButtonState();
             } else {
                 popupWindow.dismiss();  // close the pop-up
@@ -166,6 +167,9 @@ public class MainPage extends AppCompatActivity {
                     "Eingabe: " + inputText,
                     Toast.LENGTH_SHORT).show();
         });
+
+        btnClose.setOnClickListener(v -> popupWindow.dismiss());
+
         popupWindow.showAtLocation(findViewById(android.R.id.content), Gravity.CENTER, 0, 0);
     }
 
@@ -178,46 +182,47 @@ public class MainPage extends AppCompatActivity {
 
         PopupWindow popupWindow = new PopupWindow(
                 popupView,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
                 true
         );
 
         // initialize and treat the objects
-        EditText editTextCount = popupView.findViewById(R.id.etn_count_random);
-        EditText editTextMin = popupView.findViewById(R.id.etn_min_random);
-        EditText editTextMax = popupView.findViewById(R.id.et_max_random);
-        Button buttonGenerateRandom = popupView.findViewById(R.id.btn_genrate_radnom);
+        EditText etCount = popupView.findViewById(R.id.etn_count_random);
+        EditText etMin = popupView.findViewById(R.id.etn_min_random);
+        EditText etMax = popupView.findViewById(R.id.et_max_random);
+        Button btnGenerateRandom = popupView.findViewById(R.id.btn_genrate_random);
+        Button btnClose = popupView.findViewById(R.id.btn_generate_random_close);
 
 
         // logic for the button
-        buttonGenerateRandom.setOnClickListener(v -> {
+        btnGenerateRandom.setOnClickListener(v -> {
             int inputTextCount;
             int inputTextMin;
             int inputTextMax;
 
             // input "Count" shouldn't be empty
-            if (editTextCount.getText().toString().trim().isEmpty()) {
+            if (etCount.getText().toString().trim().isEmpty()) {
                 Toast.makeText(this, "Das Feld COUNT darf nicht leer sein!", Toast.LENGTH_SHORT).show();
                 return;
             } else {
-                inputTextCount = Integer.parseInt(editTextCount.getText().toString());
+                inputTextCount = Integer.parseInt(etCount.getText().toString());
             }
 
             // input "Min" shouldn't be empty
-            if (editTextMin.getText().toString().trim().isEmpty()) {
+            if (etMin.getText().toString().trim().isEmpty()) {
                 Toast.makeText(this, "Das Feld MIN darf nicht leer sein!", Toast.LENGTH_SHORT).show();
                 return;
             } else {
-                inputTextMin = Integer.parseInt(editTextMin.getText().toString());
+                inputTextMin = Integer.parseInt(etMin.getText().toString());
             }
 
             // input "Max" shouldn't be empty
-            if (editTextMax.getText().toString().trim().isEmpty()) {
+            if (etMax.getText().toString().trim().isEmpty()) {
                 Toast.makeText(this, "Das Feld MAX darf nicht leer sein!", Toast.LENGTH_SHORT).show();
                 return;
             } else {
-                inputTextMax = Integer.parseInt(editTextMax.getText().toString());
+                inputTextMax = Integer.parseInt(etMax.getText().toString());
             }
 
             // "Min" shouldn't be higher than "Max"
@@ -238,6 +243,8 @@ public class MainPage extends AppCompatActivity {
                     inputTextCount + " Zahlen generiert",
                     Toast.LENGTH_SHORT).show();
         });
+
+        btnClose.setOnClickListener(v->popupWindow.dismiss());
 
         popupWindow.showAtLocation(findViewById(android.R.id.content), Gravity.CENTER, 0, 0);
     }

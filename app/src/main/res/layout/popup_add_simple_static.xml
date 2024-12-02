@@ -1,21 +1,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:background="@color/light_black"
+              android:background="@color/layout_background"
               android:padding="4dp"
-              android:layout_gravity="center"
+              android:gravity="center"
               android:orientation="vertical"
+              android:id="@+id/ly_add_simple_static"
               >
 
     <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@color/white"
             android:padding="12dp"
     >
 
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:text="@string/popup_add_simple_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+            />
+            <Button
+                    android:id="@+id/btn_add_simple_close"
+                    android:text="@string/colse_btn_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+
+                    android:paddingHorizontal="@dimen/btn_padding_horizontal"
+                    android:paddingVertical="@dimen/btn_padding_vertical"
+                    android:backgroundTint="@color/light_black"
+                    android:textColor="@color/organge"
+                    android:textSize="@dimen/btn_text_size"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:layout_marginHorizontal="@dimen/btn_layout_margin_horizontal"
+                    android:layout_marginVertical="@dimen/btn_layout_margin_vertical"
+                    app:cornerRadius="@dimen/corner_radius"
+                    style="?android:attr/buttonBarButtonStyle"
+
+            />
+        </LinearLayout>
         <EditText
                 android:id="@+id/etn_simple_static"
                 android:layout_width="match_parent"
