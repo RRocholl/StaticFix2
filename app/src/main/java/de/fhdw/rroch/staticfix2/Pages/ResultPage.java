@@ -119,7 +119,7 @@ public class ResultPage extends AppCompatActivity {
             }
             tableLayout.addView(tableRow);
         }
-    }
+    }//
 
     // add the data to the location parameters
     private void addDataToLocationParameters(double[] input) {

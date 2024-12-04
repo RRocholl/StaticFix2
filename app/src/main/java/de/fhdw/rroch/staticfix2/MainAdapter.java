@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+
 import java.util.ArrayList;
 
 // the single item
@@ -48,7 +49,7 @@ public class MainAdapter extends BaseAdapter {
 
         itemText.setText(mItems.get(position).toString());
 
-        buttonDelete.setOnClickListener(v-> {
+        buttonDelete.setOnClickListener(v -> {
             mItems.remove(position);
             notifyDataSetChanged();
         });

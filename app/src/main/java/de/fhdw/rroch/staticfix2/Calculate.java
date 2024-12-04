@@ -2,7 +2,7 @@ package de.fhdw.rroch.staticfix2;
 
 import java.util.*;
 
-public class Calculate {
+public class Calculate { //
     private final static double roundDigit = 1000.0;
 
     // Organize input data and return sorted list

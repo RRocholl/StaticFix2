@@ -128,24 +128,24 @@ public class MainPage extends AppCompatActivity {
 
         // if the editText is empty, the Button is not available
         etNumber.addTextChangedListener(new TextWatcher() {
-                                                  @Override
-                                                  public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                                                  }
+                                            @Override
+                                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                                            }
 
-                                                  @Override
-                                                  public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                                      // make a boolean for is the text empty
-                                                      boolean mEditTextIsNotEmpty =!s.toString().trim().isEmpty();
-                                                      // if the editText is empty, the Button is not available
-                                                      btnAddNumber.setEnabled(mEditTextIsNotEmpty);
-                                                      // the perfect color for it
-                                                      btnAddNumber.setBackgroundColor(mEditTextIsNotEmpty ? getColor(R.color.light_black) : getColor(R.color.default_btn_color));
-                                                  }
+                                            @Override
+                                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                                // make a boolean for is the text empty
+                                                boolean mEditTextIsNotEmpty = !s.toString().trim().isEmpty();
+                                                // if the editText is empty, the Button is not available
+                                                btnAddNumber.setEnabled(mEditTextIsNotEmpty);
+                                                // the perfect color for it
+                                                btnAddNumber.setBackgroundColor(mEditTextIsNotEmpty ? getColor(R.color.light_black) : getColor(R.color.default_btn_color));
+                                            }
 
-                                                  @Override
-                                                  public void afterTextChanged(Editable s) {
-                                                  }
-                                              }
+                                            @Override
+                                            public void afterTextChanged(Editable s) {
+                                            }
+                                        }
         );
 
         //the logic behind the button "add"
@@ -244,7 +244,7 @@ public class MainPage extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         });
 
-        btnClose.setOnClickListener(v->popupWindow.dismiss());
+        btnClose.setOnClickListener(v -> popupWindow.dismiss());
 
         popupWindow.showAtLocation(findViewById(android.R.id.content), Gravity.CENTER, 0, 0);
     }

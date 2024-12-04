@@ -14,7 +14,7 @@ public class FormsAdapter extends BaseAdapter {
     private final Context mContext;
     private final String[] mHeaders;
     private final String[] mBodies;
-    private final boolean[] mIsBodyVisible;
+    private final boolean[] mIsBodyVisible;//
 
     // constructor the object
     public FormsAdapter(Context context, String[] headers, String[] bodies) {

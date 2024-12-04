@@ -23,6 +23,6 @@ public class FormCollectionPage extends AppCompatActivity {
 
         // create and set the Adapter
         FormsAdapter adapter = new FormsAdapter(this, headers, bodies);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter); //
     }
 }
