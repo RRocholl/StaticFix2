@@ -53,7 +53,7 @@ public class Calculate { //
         return result;
     }
 
-    //
+    //create classification
     public String createClassificationInput(ArrayList<Integer> input, int classificationSize) {
         StringBuilder result = new StringBuilder();
 
