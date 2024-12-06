@@ -51,6 +51,29 @@ public class Calculate { //
         return result;
     }
 
+    //
+    public String createClassificationInput(ArrayList<Integer> input, int classificationSize) {
+        // Only organizedData possible
+        StringBuilder result = new StringBuilder();
+
+        int max = input.get(input.size() - 1);
+        int resultSize = (int) Math.ceil(max/classificationSize);
+
+        for (int i = 1; i < 10; i++) {
+            int endIndex = i * classificationSize;
+            int startIndex = endIndex - classificationSize;
+            int counter = 0;
+
+            for (int j:input){
+                if (j >= startIndex && j <= endIndex ){
+                    counter++;
+                }
+            }
+            result.append(" "+ startIndex + " - " + endIndex +" = " + counter + "\n");
+        }
+        return result.toString();
+    }
+
     // Create header for frequency table (unique values from the input)
     private ArrayList<Integer> tableHeader(ArrayList<Integer> input) {
         ArrayList<Integer> result = new ArrayList<>(input);

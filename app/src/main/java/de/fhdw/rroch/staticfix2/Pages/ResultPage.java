@@ -3,9 +3,7 @@ package de.fhdw.rroch.staticfix2.Pages;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import de.fhdw.rroch.staticfix2.Calculate;
@@ -19,6 +17,7 @@ public class ResultPage extends AppCompatActivity {
     // initialize and treat the global objects
     private final String[] mTableHeader = {"ai", "h(ai)", "f(ai)", "H(ai)", "F(ai)", "HR(ai)", "FR(ai)"};
     private TextView mRawData, mOrganizedData;
+    private TextView mClassification;
     private TextView mMedian, mModus, mQuantile25, mQuantile75, mArithmeticMean, mGeometricMean;
     private TextView mSpan, mMeanAbsoluteDeviation, mEmpiricalVariance, mEmpiricalStandardDeviation, mCoefficientsOfVariation, mInterquartileRange;
     private TableLayout tableLayout;
@@ -27,6 +26,10 @@ public class ResultPage extends AppCompatActivity {
     private List<Double[]> mFrequencyDistribution;
     private double[] mLocationParameters;
     private double[] mScatteringParameters;
+    private Button mBtnSafeClassification;
+    private EditText mEtClassificationSize;
+    private int textSize;
+    private String mClassificationReslut;
 
     //create the result view
     @Override
@@ -35,6 +38,10 @@ public class ResultPage extends AppCompatActivity {
         setContentView(R.layout.result_layout);
 
         initializeViews();
+
+        if (textSize == 0){
+            textSize = 16;
+        }
 
         if (savedInstanceState != null) {
             retrieveSavedData(savedInstanceState);
@@ -49,6 +56,12 @@ public class ResultPage extends AppCompatActivity {
         if (mItems != null) {
             displayData();
         }
+
+        mBtnSafeClassification.setOnClickListener(v -> {
+            textSize = Integer.parseInt(mEtClassificationSize.getText().toString());
+            mClassificationReslut = mCalculate.createClassificationInput(mOrderedInputData, textSize);
+            mClassification.setText(mClassificationReslut);
+        });
     }
 
     // initialize the rest objects
@@ -68,11 +81,15 @@ public class ResultPage extends AppCompatActivity {
         mEmpiricalStandardDeviation = findViewById(R.id.tv_result_empirical_standard_deviation_data);
         mCoefficientsOfVariation = findViewById(R.id.tv_result_coefficients_of_variation_data);
         mInterquartileRange = findViewById(R.id.tv_result_interquartile_range_data);
+        mBtnSafeClassification = findViewById(R.id.btn_reslut_classification_safe);
+        mEtClassificationSize = findViewById(R.id.etn_result_classification_size);
+        mClassification = findViewById(R.id.tv_classification_reslut);
     }
 
     // get the data
     private void processData() {
         mOrderedInputData = mCalculate.organizedData(mItems);
+        mClassificationReslut = mCalculate.createClassificationInput(mOrderedInputData, textSize);
         mFrequencyDistribution = mCalculate.createFrequencyData(mItems);
         mLocationParameters = mCalculate.createLocationParameters(mOrderedInputData);
         mScatteringParameters = mCalculate.createScatteringParameters(mOrderedInputData);
@@ -82,6 +99,7 @@ public class ResultPage extends AppCompatActivity {
     private void displayData() {
         mRawData.setText(mItems.toString());
         mOrganizedData.setText(mOrderedInputData.toString());
+        mClassification.setText(mClassificationReslut);
         addDataToTableFrequency(mFrequencyDistribution);
         addDataToLocationParameters(mLocationParameters);
         addDataToScatteringParameters(mScatteringParameters);
@@ -149,6 +167,7 @@ public class ResultPage extends AppCompatActivity {
     private void retrieveSavedData(@NotNull Bundle savedInstanceState) {
         mItems = (ArrayList<Integer>) savedInstanceState.getSerializable("INPUT_DATA");
         mOrderedInputData = (ArrayList<Integer>) savedInstanceState.getSerializable("ORDERED_INPUT_DATA");
+        mClassificationReslut = savedInstanceState.getString("CLASSIFICATION_DATA");
         mFrequencyDistribution = (List<Double[]>) savedInstanceState.getSerializable("FREQUENCY_DISTRIBUTION");
         mLocationParameters = savedInstanceState.getDoubleArray("LOCATION_PARAMETERS");
         mScatteringParameters = savedInstanceState.getDoubleArray("SCATTERING_PARAMETERS");
@@ -160,6 +179,7 @@ public class ResultPage extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putSerializable("INPUT_DATA", mItems);
         outState.putSerializable("ORDERED_INPUT_DATA", mOrderedInputData);
+        outState.putString("CLASSIFICATION_DATA", mClassificationReslut);
         outState.putSerializable("FREQUENCY_DISTRIBUTION", (ArrayList<Double[]>) mFrequencyDistribution);
         outState.putDoubleArray("LOCATION_PARAMETERS", mLocationParameters);
         outState.putDoubleArray("SCATTERING_PARAMETERS", mScatteringParameters);
