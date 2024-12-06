@@ -66,7 +66,7 @@ public class Calculate { //
             int counter = 0;
 
             for (int j:input){
-                if (j >= startIndex && j <= endIndex ){
+                if (j >= startIndex && j < endIndex ){
                     counter++;
                 }
             }
