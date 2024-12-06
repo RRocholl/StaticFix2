@@ -58,7 +58,18 @@ public class ResultPage extends AppCompatActivity {
         }
 
         mBtnSafeClassification.setOnClickListener(v -> {
-            textSize = Integer.parseInt(mEtClassificationSize.getText().toString());
+            // input "Count" shouldn't be empty
+            if (mEtClassificationSize.getText().toString().trim().isEmpty()) {
+                Toast.makeText(this, "Das Feld KLASSIRUNG darf nicht leer sein!", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                if(Integer.parseInt(mEtClassificationSize.getText().toString()) == 0){
+                    Toast.makeText(this, "Das Feld KLASSIRUNG darf nicht 0 sein!", Toast.LENGTH_SHORT).show();
+                    return;
+                }else{
+                textSize = Integer.parseInt(mEtClassificationSize.getText().toString());
+                }
+            }
             mClassificationReslut = mCalculate.createClassificationInput(mOrderedInputData, textSize);
             mClassification.setText(mClassificationReslut);
         });

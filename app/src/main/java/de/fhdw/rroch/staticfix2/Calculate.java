@@ -1,5 +1,7 @@
 package de.fhdw.rroch.staticfix2;
 
+import android.util.Log;
+
 import java.util.*;
 
 public class Calculate { //
@@ -53,13 +55,12 @@ public class Calculate { //
 
     //
     public String createClassificationInput(ArrayList<Integer> input, int classificationSize) {
-        // Only organizedData possible
         StringBuilder result = new StringBuilder();
 
-        int max = input.get(input.size() - 1);
-        int resultSize = (int) Math.ceil(max/classificationSize);
+        int max = input.stream().mapToInt(Integer::intValue).max().orElse(0);
+        int resultSize = ((int) (double) (max / classificationSize))+2;
 
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < resultSize; i++) {
             int endIndex = i * classificationSize;
             int startIndex = endIndex - classificationSize;
             int counter = 0;
